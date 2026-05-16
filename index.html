@@ -260,21 +260,23 @@
   .sv-row{display:flex;overflow:hidden;}
   .sv-track{
     display:flex;gap:14px;flex:none;padding-right:14px;
-    animation:svScroll 56s linear infinite;
+    animation:svScroll 95s linear infinite;
   }
   .sv-row.rev .sv-track{animation-direction:reverse;}
   .sv-row:hover .sv-track{animation-play-state:paused;}
   @keyframes svScroll{to{transform:translateX(-100%);}}
-  .sv-chip{
-    display:flex;align-items:center;gap:12px;flex:none;
-    padding:15px 28px;border:1px solid var(--line);background:#fff;
-    font-size:.95rem;color:var(--ink);white-space:nowrap;
+  .sv-card{
+    flex:none;width:212px;padding:30px 24px;
+    border:1px solid var(--line);background:#fff;text-align:center;
   }
-  .sv-chip::before{
-    content:"";width:6px;height:6px;background:var(--olive);
-    transform:rotate(45deg);flex:none;
+  .sv-card .sv-ic{width:32px;height:32px;margin:0 auto 14px;color:var(--terra);}
+  .sv-card .sv-ic svg{width:100%;height:100%;display:block;}
+  .sv-card h4{
+    font-family:'Fraunces',serif;font-weight:400;font-size:1.05rem;
+    color:var(--brown-deep);margin-bottom:6px;letter-spacing:-.01em;
   }
-  @media(max-width:860px){ .sv-banner{aspect-ratio:16/10;} }
+  .sv-card p{font-size:.8rem;line-height:1.45;color:var(--ink-soft);}
+  @media(max-width:860px){ .sv-banner{aspect-ratio:16/10;} .sv-card{width:172px;padding:24px 16px;} }
   @media(prefers-reduced-motion:reduce){
     .sv-track{animation:none;}
     .sv-row{overflow-x:auto;}
@@ -585,56 +587,27 @@
     <div class="sv-marquee rv">
       <div class="sv-row">
         <div class="sv-track">
-          <span class="sv-chip">Elevador</span>
-          <span class="sv-chip">Wi-Fi grátis</span>
-          <span class="sv-chip">Room service 24h</span>
-          <span class="sv-chip">Fitness center</span>
-          <span class="sv-chip">Equipe multilíngue</span>
-          <span class="sv-chip">Cadeira de rodas disponível</span>
-          <span class="sv-chip">Restaurante</span>
-          <span class="sv-chip">Aluguel de bicicleta</span>
-          <span class="sv-chip">Ar-condicionado</span>
-          <span class="sv-chip">Cofre</span>
-          <span class="sv-chip">Amenidades</span>
-        </div>
-        <div class="sv-track" aria-hidden="true">
-          <span class="sv-chip">Elevador</span>
-          <span class="sv-chip">Wi-Fi grátis</span>
-          <span class="sv-chip">Room service 24h</span>
-          <span class="sv-chip">Fitness center</span>
-          <span class="sv-chip">Equipe multilíngue</span>
-          <span class="sv-chip">Cadeira de rodas disponível</span>
-          <span class="sv-chip">Restaurante</span>
-          <span class="sv-chip">Aluguel de bicicleta</span>
-          <span class="sv-chip">Ar-condicionado</span>
-          <span class="sv-chip">Cofre</span>
-          <span class="sv-chip">Amenidades</span>
-        </div>
-      </div>
-      <div class="sv-row rev">
-        <div class="sv-track">
-          <span class="sv-chip">Recepção 24h</span>
-          <span class="sv-chip">Estacionamento grátis</span>
-          <span class="sv-chip">Secador de cabelos</span>
-          <span class="sv-chip">Piscina</span>
-          <span class="sv-chip">Bar e restaurante</span>
-          <span class="sv-chip">Roupão</span>
-          <span class="sv-chip">Frigobar</span>
-          <span class="sv-chip">Cadeira anfíbia</span>
-          <span class="sv-chip">Rack para prancha de surf</span>
-          <span class="sv-chip">Meia pensão flexível</span>
-        </div>
-        <div class="sv-track" aria-hidden="true">
-          <span class="sv-chip">Recepção 24h</span>
-          <span class="sv-chip">Estacionamento grátis</span>
-          <span class="sv-chip">Secador de cabelos</span>
-          <span class="sv-chip">Piscina</span>
-          <span class="sv-chip">Bar e restaurante</span>
-          <span class="sv-chip">Roupão</span>
-          <span class="sv-chip">Frigobar</span>
-          <span class="sv-chip">Cadeira anfíbia</span>
-          <span class="sv-chip">Rack para prancha de surf</span>
-          <span class="sv-chip">Meia pensão flexível</span>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1.5"/><path d="M9.5 9 12 6.5 14.5 9M9.5 15l2.5 2.5 2.5-2.5"/></svg></div><h4>Elevador</h4><p>Acesso fácil a todos os andares.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5a11 11 0 0 1 15 0M7.5 14a6.3 6.3 0 0 1 9 0"/><circle cx="12" cy="18" r="1.1"/></svg></div><h4>Wi-Fi grátis</h4><p>Internet rápida em toda a hospedagem.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 18.5h17M5.5 18.5a6.5 6.5 0 0 1 13 0M12 7.5V5.5M9.5 5.5h5"/></svg></div><h4>Room service 24h</h4><p>Seu pedido no quarto, a qualquer hora.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5v5M6 7v10M18 7v10M21 9.5v5M6 12h12"/></svg></div><h4>Fitness center</h4><p>Espaço equipado pra manter a rotina.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 2.5 14.6 0 17M12 3.5c-2.5 2.4-2.5 14.6 0 17"/></svg></div><h4>Equipe multilíngue</h4><p>Atendimento caloroso em vários idiomas.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4.5" r="1.8"/><path d="M10 8.5h5M11 8l1 6h6l2.5 5.5M11.5 14a4.5 4.5 0 1 0 5.2 4.4"/></svg></div><h4>Cadeira de rodas</h4><p>Mobilidade pensada para todos.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9v12M5 3v6a2 2 0 0 0 4 0V3M16.5 21V12M16.5 12c-2 0-3-1.2-3-4S15 3 16.5 3v9"/></svg></div><h4>Restaurante</h4><p>Gastronomia que celebra Alagoas.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="16.5" r="3.3"/><circle cx="18" cy="16.5" r="3.3"/><path d="M6 16.5 10.5 9H16M18 16.5 13.5 9M10 9 8.7 6H6.5"/></svg></div><h4>Aluguel de bicicleta</h4><p>Pedale pela orla do Francês.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="8" rx="1.5"/><path d="M6 9h9M6.5 16.5c0 1.5 1.2 1.5 1.2 3M11.5 16.5c0 1.5 1.2 1.5 1.2 3M16.5 16.5c0 1.5 1.2 1.5 1.2 3"/></svg></div><h4>Ar-condicionado</h4><p>Clima do quarto sob seu controle.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><circle cx="11" cy="12" r="3.4"/><path d="M11 12h3.5M6.5 20v1.5M17 20v1.5"/></svg></div><h4>Cofre</h4><p>Seus pertences sempre protegidos.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.5h4v2.5l1.3 2.2V20a1 1 0 0 1-1 1H9.7a1 1 0 0 1-1-1V8.2L10 6z"/><path d="M8.7 11h6.6"/></svg></div><h4>Amenidades</h4><p>Itens de banho de cortesia.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2.5"/></svg></div><h4>Recepção 24h</h4><p>Sempre há alguém para te receber.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M9.5 16.5V7.5h3.6a3 3 0 0 1 0 6H9.5"/></svg></div><h4>Estacionamento</h4><p>Vaga para o seu carro, sem custo.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5a4.5 4.5 0 0 1 4.5-4.5h6.8l4.7 2.2v4.6L14.3 13H7.5A4.5 4.5 0 0 1 3 8.5z"/><path d="M9 13 8 20.5M12 9.2v2.6"/></svg></div><h4>Secador de cabelos</h4><p>Tudo pronto para você se arrumar.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.5c1.8 0 1.8 1.6 3.6 1.6s1.8-1.6 3.6-1.6 1.8 1.6 3.6 1.6 1.8-1.6 3.6-1.6 1.8 1.6 3.6 1.6M3 18c1.8 0 1.8 1.6 3.6 1.6S10.4 18 12.2 18M8 12V5a2 2 0 0 1 4 0M8 8.5h4"/></svg></div><h4>Piscina</h4><p>Um mergulho a poucos passos do mar.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14l-7 8z"/><path d="M12 12v7M8.5 19h7"/></svg></div><h4>Bar e restaurante</h4><p>Drinks e pratos à beira-mar.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 3 6 6v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6l-2.5-3"/><path d="M8.5 3 12 7l3.5-4M11 13h2"/></svg></div><h4>Roupão</h4><p>Conforto de hotel desde o quarto.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1.5"/><path d="M6 10h12M9.5 6v2M9.5 13v3"/></svg></div><h4>Frigobar</h4><p>Bebidas geladas sempre à mão.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M16 3v8M7 11h11M7 11l-1.5 9.5M16 11l1.5 9.5M7 7h9"/></svg></div><h4>Cadeira anfíbia</h4><p>Para curtir a água com conforto.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 18.5C3 13 7.5 4 14 3.5c2.8-.2 3.8 2.8 1.8 8.6S7.8 21 5.5 18.5z"/><path d="M8.5 13.5l3 3"/></svg></div><h4>Rack para pranchas</h4><p>Espaço seguro para a sua prancha.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.4"/></svg></div><h4>Meia pensão flexível</h4><p>Café e mais uma refeição inclusos.</p></div>
         </div>
       </div>
     </div>
@@ -776,6 +749,16 @@
   });
   document.getElementById('finalCta').addEventListener('click',function(e){
     e.preventDefault(); goBooking();
+  });
+
+  /* carrossel de serviços — duplica a faixa para loop contínuo */
+  document.querySelectorAll('.sv-row').forEach(function(row){
+    var track = row.querySelector('.sv-track');
+    if(track){
+      var clone = track.cloneNode(true);
+      clone.setAttribute('aria-hidden','true');
+      row.appendChild(clone);
+    }
   });
 
   /* reveal suave */
