@@ -303,17 +303,18 @@
   .quote .score .t{text-align:left;font-size:.78rem;letter-spacing:.06em;color:var(--ink-soft);}
 
   /* ---------- RESERVA DIRETA ---------- */
-  .sv-diffs{
-    margin-top:clamp(46px,6vw,72px);display:flex;justify-content:space-between;
+  .direct{padding:clamp(70px,10vw,120px) 44px;}
+  .direct .inner{
+    max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;
     gap:30px;flex-wrap:wrap;text-align:center;
   }
-  .sv-diffs .it{flex:1;min-width:200px;}
-  .sv-diffs .it .sym{
+  .direct .it{flex:1;min-width:200px;}
+  .direct .it .sym{
     width:38px;height:38px;margin:0 auto 16px;color:var(--terra);
     display:flex;align-items:center;justify-content:center;
   }
-  .sv-diffs .it h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.18rem;color:var(--brown-deep);margin-bottom:4px;}
-  .sv-diffs .it p{font-size:.86rem;color:var(--ink-soft);}
+  .direct .it h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.18rem;color:var(--brown-deep);margin-bottom:4px;}
+  .direct .it p{font-size:.86rem;color:var(--ink-soft);}
 
   /* ---------- CTA FINAL ---------- */
   .final{
@@ -383,7 +384,7 @@
     .nav-r nav,.nav-btn{display:none;}
     .burger{display:flex;}
     .hero-inner,.fold-tx{padding-left:22px;padding-right:22px;}
-    .manifesto,.rooms,.quote,footer{padding-left:22px;padding-right:22px;}
+    .manifesto,.rooms,.quote,.direct,footer{padding-left:22px;padding-right:22px;}
     .bookbar{flex-direction:column;}
     .bk-cell{border-right:0;border-bottom:1px solid rgba(251,246,242,.22);min-width:0;}
     .bookbar button{padding:18px;}
@@ -391,8 +392,8 @@
     .fold.right .fold-tx{text-align:left;}
     .mbar{display:flex;}
     body{padding-bottom:70px;}
-    .sv-diffs{gap:40px 30px;}
-    .sv-diffs .it{min-width:130px;flex:1 1 40%;}
+    .direct .inner{gap:40px 30px;}
+    .direct .it{min-width:130px;flex:1 1 40%;}
     nav.mob{
       display:flex;flex-direction:column;position:fixed;inset:0;z-index:79;
       background:var(--cream);padding:96px 30px 30px;gap:4px;
@@ -637,28 +638,6 @@
         </div>
       </div>
     </div>
-    <div class="sv-diffs">
-      <div class="it rv">
-        <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <h3>Melhor tarifa</h3>
-        <p>Garantida na reserva direta.</p>
-      </div>
-      <div class="it rv">
-        <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-        <h3>Cancelamento flexível</h3>
-        <p>Planos mudam, sem dor de cabeça.</p>
-      </div>
-      <div class="it rv">
-        <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9h18M7 3v3M17 3v3M5 6h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1z"/></svg></div>
-        <h3>Café premiado</h3>
-        <p>Incluso em todas as diárias.</p>
-      </div>
-      <div class="it rv">
-        <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></div>
-        <h3>Desde 1980</h3>
-        <p>Tradição em hospitalidade.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -680,6 +659,32 @@
     <div class="score">
       <span class="n">9,2</span>
       <span class="t">Avaliação média<br>Booking · TripAdvisor</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESERVA DIRETA ================= -->
+<section class="direct">
+  <div class="inner">
+    <div class="it rv">
+      <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <h3>Melhor tarifa</h3>
+      <p>Garantida na reserva direta.</p>
+    </div>
+    <div class="it rv">
+      <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <h3>Cancelamento flexível</h3>
+      <p>Planos mudam, sem dor de cabeça.</p>
+    </div>
+    <div class="it rv">
+      <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9h18M7 3v3M17 3v3M5 6h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1z"/></svg></div>
+      <h3>Café premiado</h3>
+      <p>Incluso em todas as diárias.</p>
+    </div>
+    <div class="it rv">
+      <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></div>
+      <h3>Desde 1980</h3>
+      <p>Tradição em hospitalidade.</p>
     </div>
   </div>
 </section>
