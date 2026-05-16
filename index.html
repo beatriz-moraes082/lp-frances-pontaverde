@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hotel Ponta Verde Francês · Pé na areia na Praia do Francês</title>
+<meta name="description" content="O único pé na areia da Praia do Francês. Acorde com o mar. Reserve direto com a melhor tarifa garantida." />
+
+<!--
+  ============================================================================
+  LANDING PAGE · HOTEL PONTA VERDE FRANCÊS  ·  v2 editorial
+  Direção: visual protagonista, dobras curtas, pouco texto, elegante.
+  Objetivo: aumentar conversão (gargalo: muito carrinho, pouca compra).
+
+  PENDÊNCIAS PARA A MARIA (antes de publicar):
+  1. FOTOS: todas as dobras usam fotos reais do hotel (em /img). O topo
+     usa o vídeo do YouTube como fundo.
+  2. LOGO: logo oficial aplicado (versão horizontal linear, em /img).
+  3. PREÇOS: as diárias "a partir de R$" são placeholders.
+  4. MOTOR: o widget redireciona para reservas.hotelpontaverde.com.br com
+     data/hóspedes. Confirmar o deep-link do Omnibees da unidade.
+  5. PISCINA: unidade em reforma — a página foca beira-mar e rooftop.
+  Fontes: Roihu/Airwaves não têm web font. Aproximação: Fraunces (Roihu) +
+  Hanken Grotesk (apoio). Trocar pela Roihu real via @font-face se desejar.
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --cream:#fbf6f2;
+    --sand:#f0e7d8;
+    --olive:#c0b97d;
+    --brown:#604320;
+    --brown-deep:#3a2a18;
+    --terra:#9f6c39;
+    --ink:#2e2114;
+    --ink-soft:#6d5c46;
+    --line:#e3d7c4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    background:var(--cream);color:var(--ink);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:300;line-height:1.08;letter-spacing:-.012em;}
+  em{font-style:italic;}
+
+  /* tokens tipográficos */
+  .kicker{
+    font-family:'Hanken Grotesk',sans-serif;
+    font-size:.7rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--terra);
+  }
+  .display{font-size:clamp(2.9rem,8vw,7rem);font-weight:300;}
+  .hairline{width:54px;height:1px;background:var(--terra);border:0;}
+
+  /* botões */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    font-family:'Hanken Grotesk',sans-serif;font-weight:600;
+    font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    padding:17px 36px;border-radius:0;border:1px solid var(--brown-deep);
+    background:var(--brown-deep);color:var(--cream);cursor:pointer;
+    transition:.3s ease;
+  }
+  .btn:hover{background:transparent;color:var(--brown-deep);}
+  .btn.light{background:transparent;border-color:var(--cream);color:var(--cream);}
+  .btn.light:hover{background:var(--cream);color:var(--brown-deep);}
+  .btn.solid-light{background:var(--cream);border-color:var(--cream);color:var(--brown-deep);}
+  .btn.solid-light:hover{background:transparent;color:var(--cream);}
+
+  .link-arrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--terra);padding-bottom:3px;border-bottom:1px solid var(--terra);
+    transition:.25s;
+  }
+  .link-arrow:hover{gap:15px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:80;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:26px 44px;transition:.4s ease;
+  }
+  header.solid{background:var(--cream);padding:16px 44px;box-shadow:0 1px 0 var(--line);}
+  .brand{display:flex;align-items:center;}
+  .brand img{height:46px;width:auto;display:block;}
+  .brand .logo-dark{display:none;}
+  header.solid .brand .logo-light{display:none;}
+  header.solid .brand .logo-dark{display:block;}
+  header.solid .brand img{height:40px;}
+  .nav-r{display:flex;align-items:center;gap:30px;}
+  .nav-r nav{display:flex;gap:28px;}
+  .nav-r nav a{
+    font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--cream);transition:.3s;
+  }
+  header.solid .nav-r nav a{color:var(--ink-soft);}
+  .nav-r nav a:hover{color:var(--terra);}
+  .nav-btn{
+    font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    padding:12px 26px;border:1px solid var(--cream);color:var(--cream);transition:.3s;
+  }
+  header.solid .nav-btn{border-color:var(--brown-deep);color:var(--brown-deep);}
+  .nav-btn:hover{background:var(--cream);color:var(--brown-deep);}
+  header.solid .nav-btn:hover{background:var(--brown-deep);color:var(--cream);}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
+  .burger span{width:24px;height:1.6px;background:var(--cream);transition:.3s;}
+  header.solid .burger span{background:var(--brown-deep);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100svh;display:flex;flex-direction:column;
+    justify-content:flex-end;color:var(--cream);
+    background:var(--brown-deep);
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--brown-deep);}
+  .hero-bg iframe{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%) scale(1.5);
+    width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;
+    border:0;pointer-events:none;
+  }
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(40,28,15,.46) 0%,rgba(40,28,15,.22) 38%,rgba(40,28,15,.82) 100%);
+  }
+  .hero-inner{position:relative;z-index:1;padding:0 44px 46px;max-width:1380px;margin:0 auto;width:100%;}
+  .hero .kicker{color:var(--olive);}
+  .hero h1{
+    font-size:clamp(3rem,9.4vw,8.2rem);font-weight:300;color:#fff;
+    margin:20px 0 30px;max-width:14ch;
+  }
+  .hero h1 em{color:var(--olive);font-weight:300;}
+
+  /* booking bar slim */
+  .bookbar{
+    display:flex;align-items:stretch;flex-wrap:wrap;
+    background:rgba(40,28,15,.40);backdrop-filter:blur(14px);
+    border:1px solid rgba(251,246,242,.30);
+  }
+  .bk-cell{
+    flex:1;min-width:150px;padding:15px 22px;
+    border-right:1px solid rgba(251,246,242,.22);
+  }
+  .bk-cell label{
+    display:block;font-size:.62rem;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--olive);margin-bottom:5px;
+  }
+  .bk-cell input,.bk-cell select{
+    width:100%;background:transparent;border:0;color:#fff;
+    font-family:'Fraunces',serif;font-size:1.12rem;font-weight:400;cursor:pointer;
+  }
+  .bk-cell select option{color:var(--ink);}
+  .bk-cell input:focus,.bk-cell select:focus{outline:none;}
+  .bk-cell input::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.6;cursor:pointer;}
+  .bookbar button{
+    border:0;background:var(--terra);color:#fff;cursor:pointer;
+    padding:0 44px;font-family:'Hanken Grotesk',sans-serif;
+    font-size:.76rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    transition:.3s;
+  }
+  .bookbar button:hover{background:var(--brown-deep);}
+  .hero-note{
+    margin-top:14px;font-size:.76rem;letter-spacing:.04em;color:rgba(251,246,242,.72);
+  }
+
+  /* ---------- SEÇÃO MANIFESTO ---------- */
+  .manifesto{padding:clamp(90px,15vw,180px) 44px;text-align:center;}
+  .manifesto .inner{max-width:920px;margin:0 auto;}
+  .manifesto .hairline{margin:0 auto 34px;}
+  .manifesto p{
+    font-family:'Fraunces',serif;font-weight:300;
+    font-size:clamp(1.7rem,3.6vw,3rem);line-height:1.32;color:var(--brown-deep);
+    letter-spacing:-.01em;
+  }
+  .manifesto p em{color:var(--terra);}
+
+  /* ---------- DOBRAS IMERSIVAS ---------- */
+  .fold{
+    position:relative;min-height:92vh;display:flex;align-items:flex-end;
+    color:var(--cream);background:var(--brown);overflow:hidden;
+  }
+  .fold-bg{
+    position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;
+  }
+  .fold::after{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:linear-gradient(180deg,rgba(40,28,15,.10) 30%,rgba(40,28,15,.74) 100%);
+  }
+  .fold-tx{position:relative;z-index:1;padding:0 44px 72px;max-width:1380px;margin:0 auto;width:100%;}
+  .fold-tx .kicker{color:var(--olive);}
+  .fold-tx h2{
+    font-size:clamp(2.3rem,5.4vw,4.6rem);font-weight:300;color:#fff;
+    margin:18px 0 0;max-width:18ch;
+  }
+  .fold-tx h2 em{color:var(--olive);}
+  .fold.right .fold-tx{text-align:right;}
+  .fold.right .fold-tx h2{margin-left:auto;}
+
+  /* ---------- ACOMODAÇÕES ---------- */
+  .rooms{padding:clamp(80px,12vw,150px) 44px clamp(40px,5vw,58px);}
+  .rooms-head{
+    max-width:1380px;margin:0 auto 60px;
+    display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;
+  }
+  .rooms-head h2{font-size:clamp(2.2rem,4.6vw,3.7rem);color:var(--brown-deep);margin-top:16px;}
+  .rooms-head h2 em{color:var(--terra);}
+  .rooms-head p{max-width:30ch;color:var(--ink-soft);font-size:.96rem;}
+  .room-grid{max-width:1380px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:34px;}
+  .room{display:flex;flex-direction:column;}
+  .room .ph{
+    position:relative;aspect-ratio:4/5;background:var(--brown);
+    background-size:cover;background-position:center;overflow:hidden;
+  }
+  .room .ph .tag{
+    position:absolute;top:18px;left:18px;
+    font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    background:var(--cream);color:var(--brown-deep);padding:7px 14px;
+  }
+  .room .ph .tag.hot{background:var(--terra);color:#fff;}
+  .room h3{font-size:1.7rem;color:var(--brown-deep);margin:24px 0 6px;}
+  .room .ln{color:var(--ink-soft);font-size:.95rem;margin-bottom:18px;}
+  .room .ft{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding-top:18px;border-top:1px solid var(--line);
+  }
+  .room .ft .pr{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--brown-deep);}
+  .room .ft .pr b{font-weight:400;font-size:1.5rem;}
+  .room .ft .pr small{display:block;font-family:'Hanken Grotesk',sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);}
+
+  /* ---------- SERVIÇOS ---------- */
+  .services{padding:clamp(54px,7vw,86px) 44px clamp(80px,12vw,150px);background:var(--cream);}
+  .services .inner{max-width:1380px;margin:0 auto;}
+  .sv-head{max-width:680px;margin-bottom:42px;}
+  .sv-head h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--brown-deep);margin-top:14px;}
+  .sv-head h2 em{color:var(--terra);}
+  .sv-banner{
+    width:100%;aspect-ratio:21/9;background:var(--brown);
+    background-size:cover;background-position:center;margin-bottom:48px;
+  }
+  .sv-marquee{
+    display:flex;flex-direction:column;gap:16px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  }
+  .sv-row{display:flex;overflow:hidden;}
+  .sv-track{
+    display:flex;gap:14px;flex:none;padding-right:14px;
+    animation:svScroll 56s linear infinite;
+  }
+  .sv-row.rev .sv-track{animation-direction:reverse;}
+  .sv-row:hover .sv-track{animation-play-state:paused;}
+  @keyframes svScroll{to{transform:translateX(-100%);}}
+  .sv-chip{
+    display:flex;align-items:center;gap:12px;flex:none;
+    padding:15px 28px;border:1px solid var(--line);background:#fff;
+    font-size:.95rem;color:var(--ink);white-space:nowrap;
+  }
+  .sv-chip::before{
+    content:"";width:6px;height:6px;background:var(--olive);
+    transform:rotate(45deg);flex:none;
+  }
+  @media(max-width:860px){ .sv-banner{aspect-ratio:16/10;} }
+  @media(prefers-reduced-motion:reduce){
+    .sv-track{animation:none;}
+    .sv-row{overflow-x:auto;}
+  }
+
+  /* ---------- CITAÇÃO ---------- */
+  .quote{
+    position:relative;padding:clamp(90px,14vw,170px) 44px;text-align:center;
+    background:var(--sand);
+  }
+  .quote .inner{max-width:1000px;margin:0 auto;}
+  .quote .stars{color:var(--olive);letter-spacing:6px;font-size:1rem;margin-bottom:30px;}
+  .quote blockquote{
+    font-family:'Fraunces',serif;font-weight:300;font-style:italic;
+    font-size:clamp(1.6rem,3.6vw,2.9rem);line-height:1.36;color:var(--brown-deep);
+  }
+  .quote .by{
+    margin-top:34px;font-size:.72rem;font-weight:600;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--terra);
+  }
+  .quote .score{
+    margin-top:54px;display:inline-flex;align-items:center;gap:18px;
+    padding-top:32px;border-top:1px solid var(--line);
+  }
+  .quote .score .n{font-family:'Fraunces',serif;font-size:3.1rem;font-weight:300;color:var(--terra);line-height:1;}
+  .quote .score .t{text-align:left;font-size:.78rem;letter-spacing:.06em;color:var(--ink-soft);}
+
+  /* ---------- RESERVA DIRETA ---------- */
+  .direct{padding:clamp(70px,10vw,120px) 44px;}
+  .direct .inner{
+    max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;
+    gap:30px;flex-wrap:wrap;text-align:center;
+  }
+  .direct .it{flex:1;min-width:200px;}
+  .direct .it .sym{
+    width:38px;height:38px;margin:0 auto 16px;color:var(--terra);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .direct .it h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.18rem;color:var(--brown-deep);margin-bottom:4px;}
+  .direct .it p{font-size:.86rem;color:var(--ink-soft);}
+
+  /* ---------- CTA FINAL ---------- */
+  .final{
+    position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;
+    text-align:center;color:var(--cream);background:var(--brown-deep);
+  }
+  .final-bg{
+    position:absolute;inset:0;z-index:0;
+    background-image:
+      linear-gradient(rgba(40,28,15,.42),rgba(40,28,15,.62)),
+      url('img/cta-por-do-sol.jpg');
+    background-size:cover;background-position:center;
+  }
+  .final .inner{position:relative;z-index:1;padding:0 44px;}
+  .final .kicker{color:var(--olive);}
+  .final h2{font-size:clamp(2.4rem,6vw,5rem);font-weight:300;color:#fff;margin:22px auto 16px;max-width:16ch;}
+  .final h2 em{color:var(--olive);}
+  .final p{color:rgba(251,246,242,.8);margin-bottom:36px;font-size:1rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--brown-deep);color:#b6a78f;padding:74px 44px 30px;}
+  .foot-top{
+    max-width:1380px;margin:0 auto;display:flex;justify-content:space-between;
+    gap:46px;flex-wrap:wrap;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.09);
+  }
+  .foot-brand{max-width:320px;}
+  .foot-brand .foot-logo{height:54px;width:auto;margin-bottom:8px;}
+  .foot-brand .seal{font-family:'Fraunces',serif;font-style:italic;font-weight:300;color:var(--olive);font-size:1.15rem;margin-top:14px;}
+  .foot-col h4{
+    font-family:'Hanken Grotesk',sans-serif;font-size:.66rem;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;
+  }
+  .foot-col p,.foot-col a{display:block;font-size:.9rem;margin-bottom:9px;color:#b6a78f;}
+  .foot-col a:hover{color:var(--cream);}
+  .foot-bottom{
+    max-width:1380px;margin:0 auto;padding-top:24px;
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    font-size:.76rem;letter-spacing:.04em;color:#8a7c66;
+  }
+
+  /* ---------- BARRA MOBILE ---------- */
+  .mbar{
+    display:none;position:fixed;bottom:0;left:0;right:0;z-index:75;
+    background:var(--cream);border-top:1px solid var(--line);
+    padding:11px 18px;align-items:center;justify-content:space-between;gap:14px;
+  }
+  .mbar .mp{line-height:1.15;}
+  .mbar .mp small{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);}
+  .mbar .mp b{font-family:'Fraunces',serif;font-weight:400;font-size:1.32rem;color:var(--brown-deep);}
+  .mbar .btn{flex:1;max-width:210px;padding:15px 20px;}
+
+  /* ---------- REVEAL ---------- */
+  .rv{opacity:0;transform:translateY(30px);transition:1s cubic-bezier(.16,.7,.2,1);}
+  .rv.in{opacity:1;transform:none;}
+
+  /* ---------- RESPONSIVO ---------- */
+  @media(min-width:900px){
+    .fold-bg,.final-bg{background-attachment:fixed;}
+  }
+  @media(max-width:1000px){
+    .room-grid{grid-template-columns:1fr;max-width:460px;}
+    .room .ph{aspect-ratio:16/11;}
+  }
+  @media(max-width:860px){
+    header{padding:18px 22px;}
+    header.solid{padding:13px 22px;}
+    .nav-r nav,.nav-btn{display:none;}
+    .burger{display:flex;}
+    .hero-inner,.fold-tx{padding-left:22px;padding-right:22px;}
+    .manifesto,.rooms,.quote,.direct,footer{padding-left:22px;padding-right:22px;}
+    .bookbar{flex-direction:column;}
+    .bk-cell{border-right:0;border-bottom:1px solid rgba(251,246,242,.22);min-width:0;}
+    .bookbar button{padding:18px;}
+    .fold{min-height:80vh;}
+    .fold.right .fold-tx{text-align:left;}
+    .mbar{display:flex;}
+    body{padding-bottom:70px;}
+    .direct .inner{gap:40px 30px;}
+    .direct .it{min-width:130px;flex:1 1 40%;}
+    nav.mob{
+      display:flex;flex-direction:column;position:fixed;inset:0;z-index:79;
+      background:var(--cream);padding:96px 30px 30px;gap:4px;
+    }
+    nav.mob a{
+      font-size:1rem;font-weight:600;letter-spacing:.04em;color:var(--brown-deep);
+      padding:16px 0;border-bottom:1px solid var(--line);text-transform:none;
+    }
+    nav.mob .btn{margin-top:20px;}
+  }
+  @media(max-width:560px){
+    .hero h1{font-size:2.6rem;max-width:16ch;margin:12px 0 22px;}
+    .hero-inner{padding-bottom:38px;}
+    .quote .score{flex-direction:column;gap:6px;text-align:center;}
+    .quote .score .t{text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="hd">
+  <a href="#top" class="brand" aria-label="Hotel Ponta Verde Francês">
+    <img class="logo-light" src="img/logo-branco.png" alt="Hotel Ponta Verde Francês" />
+    <img class="logo-dark" src="img/logo-cor.png" alt="Hotel Ponta Verde Francês" />
+  </a>
+  <div class="nav-r">
+    <nav id="navlinks">
+      <a href="#estadia">Estadia</a>
+      <a href="#acomodacoes">Acomodações</a>
+      <a href="#praia">Praia do Francês</a>
+      <a href="#reservar" class="btn" style="display:none;">Reservar</a>
+    </nav>
+    <a href="#reservar" class="nav-btn">Reservar</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <!-- VÍDEO DE FUNDO · YouTube. Sem som, em loop. Para um resultado mais
+       limpo (sem marca YouTube), hospedar o vídeo e usar a tag <video>. -->
+  <div class="hero-bg">
+    <iframe src="https://www.youtube.com/embed/lzLjXnTE0Bs?autoplay=1&mute=1&controls=0&loop=1&playlist=lzLjXnTE0Bs&playsinline=1&rel=0&modestbranding=1&disablekb=1&showinfo=0"
+            title="Hotel Ponta Verde Francês" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="hero-inner">
+    <span class="kicker">Praia do Francês · Alagoas</span>
+    <h1>Acorde com <em>o mar.</em></h1>
+
+    <!-- WIDGET DE RESERVA -->
+    <form class="bookbar" id="bookingForm" aria-label="Reservar">
+      <div class="bk-cell">
+        <label for="ci">Check-in</label>
+        <input type="date" id="ci" required />
+      </div>
+      <div class="bk-cell">
+        <label for="co">Check-out</label>
+        <input type="date" id="co" required />
+      </div>
+      <div class="bk-cell">
+        <label for="gs">Hóspedes</label>
+        <select id="gs">
+          <option value="2">2 hóspedes</option>
+          <option value="1">1 hóspede</option>
+          <option value="3">3 hóspedes</option>
+          <option value="4">4 hóspedes</option>
+        </select>
+      </div>
+      <button type="submit">Reservar</button>
+    </form>
+    <p class="hero-note">O único pé na areia da Praia do Francês · melhor tarifa garantida na reserva direta</p>
+  </div>
+</section>
+
+<!-- ================= MANIFESTO ================= -->
+<section class="manifesto" id="estadia">
+  <div class="inner rv">
+    <hr class="hairline" />
+    <p><em>Acolher bem</em> é a nossa praia.</p>
+  </div>
+</section>
+
+<!-- ================= DOBRA 1 · PÉ NA AREIA ================= -->
+<section class="fold">
+  <div class="fold-bg" style="background-image:url('img/praia-aerea.jpg');background-position:center 60%;"></div>
+  <div class="fold-tx rv">
+    <span class="kicker">Pé na areia</span>
+    <h2>Da cama à maré, <em>descalço.</em></h2>
+  </div>
+</section>
+
+<!-- ================= DOBRA 2 · SAX AO PÔR DO SOL ================= -->
+<section class="fold right">
+  <div class="fold-bg" style="background-image:url('img/sax-por-do-sol.jpg');background-position:center 30%;"></div>
+  <div class="fold-tx rv">
+    <span class="kicker">Sabores &amp; sons</span>
+    <h2>O sax anuncia <em>o pôr do sol.</em></h2>
+  </div>
+</section>
+
+<!-- ================= DOBRA 3 · RESTAURANTE FATEIXA ================= -->
+<section class="fold">
+  <div class="fold-bg" style="background-image:url('img/fateixa.jpg');background-position:center 55%;"></div>
+  <div class="fold-tx rv">
+    <span class="kicker">Restaurante Fateixa</span>
+    <h2>A cozinha que <em>celebra Alagoas.</em></h2>
+  </div>
+</section>
+
+<!-- ================= DOBRA 4 · EXPERIÊNCIAS ROMÂNTICAS ================= -->
+<section class="fold right">
+  <div class="fold-bg" style="background-image:url('img/quarto-romantico.jpg');background-position:center 62%;"></div>
+  <div class="fold-tx rv">
+    <span class="kicker">Experiências românticas</span>
+    <h2>A dois, <em>sem pressa, sem plateia.</em></h2>
+  </div>
+</section>
+
+<!-- ================= DOBRA 5 · SURF ================= -->
+<section class="fold">
+  <div class="fold-bg" style="background-image:url('img/surfista.jpg');background-position:center 55%;"></div>
+  <div class="fold-tx rv">
+    <span class="kicker">Praia do Francês</span>
+    <h2>A onda mora <em>na sua porta.</em></h2>
+  </div>
+</section>
+
+<!-- ================= ACOMODAÇÕES ================= -->
+<section class="rooms" id="acomodacoes">
+  <div class="rooms-head rv">
+    <div>
+      <span class="kicker">Acomodações</span>
+      <h2>Escolha <em>como acordar.</em></h2>
+    </div>
+    <p>Tarifas de baixa temporada, as menores do ano.</p>
+  </div>
+
+  <!-- PREÇOS: placeholders. Atualizar com a tarifa real de baixa temporada. -->
+  <div class="room-grid">
+    <article class="room rv">
+      <div class="ph" style="background-image:url('img/quarto-aconchego.jpg');background-position:center 60%;">
+        <span class="tag">Vista Jardim</span>
+      </div>
+      <h3>Aconchego</h3>
+      <p class="ln">Cama king, varanda e o verde para abrir o dia com calma.</p>
+      <div class="ft">
+        <span class="pr"><small>A partir de</small><b>R$ 549</b></span>
+        <a href="#reservar" class="link-arrow">Reservar →</a>
+      </div>
+    </article>
+
+    <article class="room rv">
+      <div class="ph" style="background-image:url('img/quarto-vila.jpg');background-position:center 58%;">
+        <span class="tag hot">Mais procurado</span>
+      </div>
+      <h3>Vila</h3>
+      <p class="ln">Mais espaço e a atmosfera de casa de praia que faz voltar.</p>
+      <div class="ft">
+        <span class="pr"><small>A partir de</small><b>R$ 689</b></span>
+        <a href="#reservar" class="link-arrow">Reservar →</a>
+      </div>
+    </article>
+
+    <article class="room rv">
+      <div class="ph" style="background-image:url('img/quarto-frentemar.jpg');background-position:center 45%;">
+        <span class="tag">Frente Mar</span>
+      </div>
+      <h3>Frente Mar</h3>
+      <p class="ln">O mar como primeira e última imagem do dia. Poucas unidades.</p>
+      <div class="ft">
+        <span class="pr"><small>A partir de</small><b>R$ 899</b></span>
+        <a href="#reservar" class="link-arrow">Reservar →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= SEÇÃO · NOSSOS SERVIÇOS ================= -->
+<section class="services">
+  <div class="inner">
+    <div class="sv-head rv">
+      <span class="kicker">Estrutura &amp; serviços</span>
+      <h2>Tudo o que a sua <em>estadia pede.</em></h2>
+    </div>
+    <div class="sv-banner rv" style="background-image:url('img/hotel-aerea.jpg');background-position:center 62%;"></div>
+    <div class="sv-marquee rv">
+      <div class="sv-row">
+        <div class="sv-track">
+          <span class="sv-chip">Elevador</span>
+          <span class="sv-chip">Wi-Fi grátis</span>
+          <span class="sv-chip">Room service 24h</span>
+          <span class="sv-chip">Fitness center</span>
+          <span class="sv-chip">Equipe multilíngue</span>
+          <span class="sv-chip">Cadeira de rodas disponível</span>
+          <span class="sv-chip">Restaurante</span>
+          <span class="sv-chip">Aluguel de bicicleta</span>
+          <span class="sv-chip">Ar-condicionado</span>
+          <span class="sv-chip">Cofre</span>
+          <span class="sv-chip">Amenidades</span>
+        </div>
+        <div class="sv-track" aria-hidden="true">
+          <span class="sv-chip">Elevador</span>
+          <span class="sv-chip">Wi-Fi grátis</span>
+          <span class="sv-chip">Room service 24h</span>
+          <span class="sv-chip">Fitness center</span>
+          <span class="sv-chip">Equipe multilíngue</span>
+          <span class="sv-chip">Cadeira de rodas disponível</span>
+          <span class="sv-chip">Restaurante</span>
+          <span class="sv-chip">Aluguel de bicicleta</span>
+          <span class="sv-chip">Ar-condicionado</span>
+          <span class="sv-chip">Cofre</span>
+          <span class="sv-chip">Amenidades</span>
+        </div>
+      </div>
+      <div class="sv-row rev">
+        <div class="sv-track">
+          <span class="sv-chip">Recepção 24h</span>
+          <span class="sv-chip">Estacionamento grátis</span>
+          <span class="sv-chip">Secador de cabelos</span>
+          <span class="sv-chip">Piscina</span>
+          <span class="sv-chip">Bar e restaurante</span>
+          <span class="sv-chip">Roupão</span>
+          <span class="sv-chip">Frigobar</span>
+          <span class="sv-chip">Cadeira anfíbia</span>
+          <span class="sv-chip">Rack para prancha de surf</span>
+          <span class="sv-chip">Meia pensão flexível</span>
+        </div>
+        <div class="sv-track" aria-hidden="true">
+          <span class="sv-chip">Recepção 24h</span>
+          <span class="sv-chip">Estacionamento grátis</span>
+          <span class="sv-chip">Secador de cabelos</span>
+          <span class="sv-chip">Piscina</span>
+          <span class="sv-chip">Bar e restaurante</span>
+          <span class="sv-chip">Roupão</span>
+          <span class="sv-chip">Frigobar</span>
+          <span class="sv-chip">Cadeira anfíbia</span>
+          <span class="sv-chip">Rack para prancha de surf</span>
+          <span class="sv-chip">Meia pensão flexível</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DOBRA 6 · DESTINO ================= -->
+<section class="fold right" id="praia">
+  <div class="fold-bg" style="background-image:url('img/destino-praia.jpg');background-position:center 40%;"></div>
+  <div class="fold-tx rv">
+    <span class="kicker">Praia do Francês</span>
+    <h2>Um destino onde <em>tudo se faz a pé.</em></h2>
+  </div>
+</section>
+
+<!-- ================= CITAÇÃO ================= -->
+<section class="quote">
+  <div class="inner rv">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Acordar com o som do mar não tem preço. E o melhor café da manhã que já tive na vida."</blockquote>
+    <div class="by">Mariana R. · hóspede verificada no Booking</div>
+    <div class="score">
+      <span class="n">9,2</span>
+      <span class="t">Avaliação média<br>Booking · TripAdvisor</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESERVA DIRETA ================= -->
+<section class="direct">
+  <div class="inner">
+    <div class="it rv">
+      <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <h3>Melhor tarifa</h3>
+      <p>Garantida na reserva direta.</p>
+    </div>
+    <div class="it rv">
+      <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <h3>Cancelamento flexível</h3>
+      <p>Planos mudam, sem dor de cabeça.</p>
+    </div>
+    <div class="it rv">
+      <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9h18M7 3v3M17 3v3M5 6h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1z"/></svg></div>
+      <h3>Café premiado</h3>
+      <p>Incluso em todas as diárias.</p>
+    </div>
+    <div class="it rv">
+      <div class="sym"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></div>
+      <h3>Desde 1980</h3>
+      <p>Tradição em hospitalidade.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="final" id="reservar">
+  <div class="final-bg"></div>
+  <div class="inner rv">
+    <span class="kicker">Sua estadia espera</span>
+    <h2>Maio e junho <em>pedem mar.</em></h2>
+    <p>A melhor diária do ano, no único pé na areia da Praia do Francês.</p>
+    <a href="#" class="btn solid-light" id="finalCta">Reservar agora</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <img class="foot-logo" src="img/logo-branco.png" alt="Hotel Ponta Verde Francês" />
+      <div class="seal">Acolher bem é a nossa praia</div>
+    </div>
+    <div class="foot-col">
+      <h4>Reservas</h4>
+      <a href="#reservar">Ver disponibilidade</a>
+      <a href="tel:+558221210990">(82) 2121-0990</a>
+      <a href="mailto:reservas5@hotelpontaverde.com.br">reservas5@hotelpontaverde.com.br</a>
+    </div>
+    <div class="foot-col">
+      <h4>Onde estamos</h4>
+      <p>Rua das Algas, 300</p>
+      <p>Praia do Francês, Marechal Deodoro/AL</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Ponta+Verde+Francês" target="_blank" rel="noopener">Ver no mapa →</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Hotéis Ponta Verde · Maceió &amp; Francês</span>
+    <span>Tradição em hospitalidade desde 1980</span>
+  </div>
+</footer>
+
+<!-- ================= BARRA MOBILE ================= -->
+<div class="mbar">
+  <div class="mp"><small>A partir de</small><br><b>R$ 549</b> <span style="font-size:.78rem;color:var(--ink-soft);">/ noite</span></div>
+  <a href="#reservar" class="btn">Reservar</a>
+</div>
+
+<script>
+  /* nav sólida ao rolar */
+  var hd = document.getElementById('hd');
+  window.addEventListener('scroll', function(){
+    hd.classList.toggle('solid', window.scrollY > window.innerHeight*0.7);
+  });
+
+  /* menu mobile */
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('navlinks');
+  burger.addEventListener('click', function(){
+    nav.classList.toggle('mob');
+    document.body.style.overflow = nav.classList.contains('mob') ? 'hidden' : '';
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('mob'); document.body.style.overflow='';
+    });
+  });
+
+  /* datas */
+  var ci=document.getElementById('ci'), co=document.getElementById('co');
+  function fmt(d){return d.toISOString().split('T')[0];}
+  var t=new Date(), tm=new Date(); tm.setDate(t.getDate()+1);
+  ci.min=fmt(t); ci.value=fmt(t);
+  co.min=fmt(tm); co.value=fmt(tm);
+  ci.addEventListener('change',function(){
+    var n=new Date(ci.value); n.setDate(n.getDate()+1);
+    co.min=fmt(n); if(co.value<=ci.value) co.value=fmt(n);
+  });
+
+  /* envio ao motor de reservas (Omnibees) — confirmar deep-link da unidade */
+  function goBooking(){
+    var base='https://reservas.hotelpontaverde.com.br/';
+    var qs='Checkin='+encodeURIComponent(ci.value)
+          +'&Checkout='+encodeURIComponent(co.value)
+          +'&Adults='+encodeURIComponent(document.getElementById('gs').value);
+    window.open(base+'?'+qs,'_blank','noopener');
+  }
+  document.getElementById('bookingForm').addEventListener('submit',function(e){
+    e.preventDefault(); goBooking();
+  });
+  document.getElementById('finalCta').addEventListener('click',function(e){
+    e.preventDefault(); goBooking();
+  });
+
+  /* reveal suave */
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  },{threshold:.16});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
