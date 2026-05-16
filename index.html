@@ -252,23 +252,14 @@
     width:100%;aspect-ratio:21/9;background:var(--brown);
     background-size:cover;background-position:center;margin-bottom:48px;
   }
-  .sv-marquee{
-    display:flex;flex-direction:column;gap:16px;
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
-            mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  .sv-carousel{display:flex;align-items:center;gap:10px;}
+  .sv-row{
+    flex:1;display:flex;overflow-x:auto;scroll-behavior:smooth;
+    scrollbar-width:none;-ms-overflow-style:none;
   }
-  .sv-row{display:flex;overflow:hidden;}
-  .sv-track{
-    display:flex;gap:14px;flex:none;padding-right:14px;
-    animation:svScroll 95s linear infinite;
-  }
-  .sv-row.rev .sv-track{animation-direction:reverse;}
-  .sv-row:hover .sv-track{animation-play-state:paused;}
-  @keyframes svScroll{to{transform:translateX(-100%);}}
-  .sv-card{
-    flex:none;width:212px;padding:30px 24px;
-    border:1px solid var(--line);background:#fff;text-align:center;
-  }
+  .sv-row::-webkit-scrollbar{display:none;}
+  .sv-track{display:flex;gap:6px;flex:none;}
+  .sv-card{flex:none;width:198px;padding:16px 14px;text-align:center;}
   .sv-card .sv-ic{width:32px;height:32px;margin:0 auto 14px;color:var(--terra);}
   .sv-card .sv-ic svg{width:100%;height:100%;display:block;}
   .sv-card h4{
@@ -276,10 +267,20 @@
     color:var(--brown-deep);margin-bottom:6px;letter-spacing:-.01em;
   }
   .sv-card p{font-size:.8rem;line-height:1.45;color:var(--ink-soft);}
-  @media(max-width:860px){ .sv-banner{aspect-ratio:16/10;} .sv-card{width:172px;padding:24px 16px;} }
-  @media(prefers-reduced-motion:reduce){
-    .sv-track{animation:none;}
-    .sv-row{overflow-x:auto;}
+  .sv-arrow{
+    flex:none;width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--brown-deep);background:transparent;
+    color:var(--brown-deep);cursor:pointer;transition:.25s ease;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sv-arrow:hover{background:var(--brown-deep);color:var(--cream);}
+  .sv-arrow:disabled{opacity:.25;cursor:default;}
+  .sv-arrow:disabled:hover{background:transparent;color:var(--brown-deep);}
+  .sv-arrow svg{width:18px;height:18px;}
+  @media(max-width:860px){
+    .sv-banner{aspect-ratio:16/10;}
+    .sv-card{width:170px;}
+    .sv-arrow{width:40px;height:40px;}
   }
 
   /* ---------- CITAÇÃO ---------- */
@@ -584,8 +585,9 @@
       <h2>Tudo o que a sua <em>estadia pede.</em></h2>
     </div>
     <div class="sv-banner rv" style="background-image:url('img/hotel-aerea.jpg');background-position:center 62%;"></div>
-    <div class="sv-marquee rv">
-      <div class="sv-row">
+    <div class="sv-carousel rv">
+      <button class="sv-arrow" id="svPrev" type="button" aria-label="Ver serviços anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="sv-row" id="svRow">
         <div class="sv-track">
           <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="1.5"/><path d="M9.5 9 12 6.5 14.5 9M9.5 15l2.5 2.5 2.5-2.5"/></svg></div><h4>Elevador</h4><p>Acesso fácil a todos os andares.</p></div>
           <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5a11 11 0 0 1 15 0M7.5 14a6.3 6.3 0 0 1 9 0"/><circle cx="12" cy="18" r="1.1"/></svg></div><h4>Wi-Fi grátis</h4><p>Internet rápida em toda a hospedagem.</p></div>
@@ -610,6 +612,7 @@
           <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.4"/></svg></div><h4>Meia pensão flexível</h4><p>Café e mais uma refeição inclusos.</p></div>
         </div>
       </div>
+      <button class="sv-arrow" id="svNext" type="button" aria-label="Ver próximos serviços"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </div>
 </section>
@@ -779,15 +782,23 @@
     e.preventDefault(); goBooking();
   });
 
-  /* carrossel de serviços — duplica a faixa para loop contínuo */
-  document.querySelectorAll('.sv-row').forEach(function(row){
-    var track = row.querySelector('.sv-track');
-    if(track){
-      var clone = track.cloneNode(true);
-      clone.setAttribute('aria-hidden','true');
-      row.appendChild(clone);
+  /* carrossel de serviços — navegação por setas */
+  (function(){
+    var row=document.getElementById('svRow');
+    var prev=document.getElementById('svPrev');
+    var next=document.getElementById('svNext');
+    if(!row||!prev||!next) return;
+    function step(){ return Math.max(row.clientWidth*0.8, 200); }
+    prev.addEventListener('click',function(){ row.scrollBy({left:-step(),behavior:'smooth'}); });
+    next.addEventListener('click',function(){ row.scrollBy({left:step(),behavior:'smooth'}); });
+    function update(){
+      prev.disabled = row.scrollLeft <= 2;
+      next.disabled = row.scrollLeft >= row.scrollWidth - row.clientWidth - 2;
     }
-  });
+    row.addEventListener('scroll',update);
+    window.addEventListener('resize',update);
+    update();
+  })();
 
   /* reveal suave */
   var io=new IntersectionObserver(function(en){
