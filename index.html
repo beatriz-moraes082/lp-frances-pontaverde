@@ -42,7 +42,7 @@
     --line:#e3d7c4;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:84px;}
   body{
     font-family:'Hanken Grotesk',system-ui,sans-serif;
     background:var(--cream);color:var(--ink);
@@ -124,7 +124,10 @@
     justify-content:flex-end;color:var(--cream);
     background:var(--brown-deep);
   }
-  .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--brown-deep);}
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;overflow:hidden;
+    background:var(--brown-deep) url('img/praia-aerea.jpg') center/cover no-repeat;
+  }
   .hero-bg iframe{
     position:absolute;top:50%;left:50%;
     transform:translate(-50%,-50%) scale(1.5);
@@ -388,12 +391,17 @@
     .burger{display:flex;}
     .hero-inner,.fold-tx{padding-left:22px;padding-right:22px;}
     .manifesto,.rooms,.quote,.direct,footer{padding-left:22px;padding-right:22px;}
-    .bookbar{flex-direction:column;}
-    .bk-cell{border-right:0;border-bottom:1px solid rgba(251,246,242,.22);min-width:0;}
-    .bookbar button{padding:18px;}
+    .bookbar{display:grid;grid-template-columns:1fr 1fr;}
+    .bk-cell{border-right:0;border-bottom:1px solid rgba(251,246,242,.22);min-width:0;padding:14px 16px;}
+    .bk-cell input,.bk-cell select{font-size:1rem;}
+    .bk-cell:first-child{border-right:1px solid rgba(251,246,242,.22);}
+    .bk-cell:nth-child(3){grid-column:1 / -1;}
+    .bookbar button{grid-column:1 / -1;padding:18px;}
     .fold{min-height:80vh;}
     .fold.right .fold-tx{text-align:left;}
-    .mbar{display:flex;}
+    .hero-bg iframe{display:none;}
+    .mbar{display:flex;transform:translateY(110%);transition:transform .35s cubic-bezier(.16,.7,.2,1);}
+    .mbar.show{transform:none;}
     body{padding-bottom:70px;}
     .direct .inner{gap:40px 30px;}
     .direct .it{min-width:130px;flex:1 1 40%;}
@@ -739,8 +747,11 @@
 <script>
   /* nav sólida ao rolar */
   var hd = document.getElementById('hd');
+  var mbar = document.querySelector('.mbar');
   window.addEventListener('scroll', function(){
-    hd.classList.toggle('solid', window.scrollY > window.innerHeight*0.7);
+    var past = window.scrollY > window.innerHeight*0.7;
+    hd.classList.toggle('solid', past);
+    if(mbar) mbar.classList.toggle('show', past);
   });
 
   /* menu mobile */
