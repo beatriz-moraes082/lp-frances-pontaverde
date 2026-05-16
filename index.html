@@ -195,10 +195,12 @@
     color:var(--cream);background:var(--brown);overflow:hidden;
   }
   .fold-bg{
-    position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;
+    position:absolute;inset:-14% 0;z-index:0;background-size:cover;background-position:center;
+    will-change:transform;
   }
   .fold-video{
-    position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;
+    position:absolute;inset:-14% 0;z-index:0;width:100%;object-fit:cover;
+    will-change:transform;
   }
   .fold::after{
     content:"";position:absolute;inset:0;z-index:0;
@@ -325,14 +327,14 @@
   /* ---------- CTA FINAL ---------- */
   .final{
     position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;
-    text-align:center;color:var(--cream);background:var(--brown-deep);
+    text-align:center;color:var(--cream);background:var(--brown-deep);overflow:hidden;
   }
   .final-bg{
-    position:absolute;inset:0;z-index:0;
+    position:absolute;inset:-14% 0;z-index:0;
     background-image:
       linear-gradient(rgba(40,28,15,.42),rgba(40,28,15,.62)),
       url('img/cta-por-do-sol.jpg');
-    background-size:cover;background-position:center;
+    background-size:cover;background-position:center;will-change:transform;
   }
   .final .inner{position:relative;z-index:1;padding:0 44px;}
   .final .kicker{color:var(--olive);}
@@ -377,9 +379,6 @@
   .rv.in{opacity:1;transform:none;}
 
   /* ---------- RESPONSIVO ---------- */
-  @media(min-width:900px){
-    .fold-bg,.final-bg{background-attachment:fixed;}
-  }
   @media(max-width:1000px){
     .room-grid{grid-template-columns:1fr;max-width:460px;}
     .room .ph{aspect-ratio:16/11;}
@@ -815,6 +814,29 @@
     en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
   },{threshold:.16});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* parallax de rolagem — funciona no mobile (transform, sem background-fixed) */
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
+    var layers = document.querySelectorAll('.fold-bg,.fold-video,.final-bg');
+    if(!layers.length) return;
+    var SPEED = 64, ticking = false;
+    function update(){
+      var vh = window.innerHeight;
+      layers.forEach(function(el){
+        var s = el.parentElement.getBoundingClientRect();
+        if(s.bottom < -40 || s.top > vh + 40) return;
+        var prog = (s.top + s.height/2 - vh/2) / vh;
+        el.style.transform = 'translate3d(0,'+(-prog*SPEED).toFixed(1)+'px,0)';
+      });
+      ticking = false;
+    }
+    function onScroll(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',update);
+    update();
+  })();
 </script>
 </body>
 </html>
