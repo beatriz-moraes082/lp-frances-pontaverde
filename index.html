@@ -28,6 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" />
 
 <style>
   :root{
@@ -427,6 +428,44 @@
     .quote .score{flex-direction:column;gap:6px;text-align:center;}
     .quote .score .t{text-align:center;}
   }
+
+  /* ---------- SELETOR DE DATA · tema Ponta Verde ---------- */
+  .flatpickr-calendar{
+    background:var(--cream);border:1px solid var(--line);border-radius:0;
+    box-shadow:0 20px 54px rgba(40,28,15,.26);
+    font-family:'Hanken Grotesk',sans-serif;
+  }
+  .flatpickr-calendar.arrowTop:after,.flatpickr-calendar.arrowBottom:after{
+    border-bottom-color:var(--cream);border-top-color:var(--cream);
+  }
+  .flatpickr-calendar.arrowTop:before,.flatpickr-calendar.arrowBottom:before{
+    border-bottom-color:var(--line);border-top-color:var(--line);
+  }
+  .flatpickr-months .flatpickr-month{color:var(--brown-deep);}
+  .flatpickr-current-month{padding-top:8px;}
+  .flatpickr-current-month .cur-month,
+  .flatpickr-current-month input.cur-year{
+    font-family:'Fraunces',serif;font-weight:400;color:var(--brown-deep);
+  }
+  .flatpickr-months .flatpickr-prev-month,
+  .flatpickr-months .flatpickr-next-month{color:var(--brown-deep);fill:var(--brown-deep);}
+  .flatpickr-months .flatpickr-prev-month:hover svg,
+  .flatpickr-months .flatpickr-next-month:hover svg{fill:var(--terra);}
+  span.flatpickr-weekday{
+    color:var(--terra);font-weight:600;font-size:.68rem;
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  .flatpickr-day{color:var(--ink);border-radius:0;font-weight:400;}
+  .flatpickr-day:hover,.flatpickr-day:focus{background:var(--sand);border-color:var(--sand);}
+  .flatpickr-day.today{border-color:var(--olive);}
+  .flatpickr-day.today:hover{background:var(--sand);color:var(--ink);}
+  .flatpickr-day.selected,.flatpickr-day.selected:hover{
+    background:var(--terra);border-color:var(--terra);color:#fff;
+  }
+  .flatpickr-day.flatpickr-disabled,
+  .flatpickr-day.prevMonthDay,.flatpickr-day.nextMonthDay{
+    color:var(--ink-soft);opacity:.38;
+  }
 </style>
 </head>
 <body>
@@ -466,11 +505,11 @@
     <form class="bookbar" id="bookingForm" aria-label="Reservar">
       <div class="bk-cell">
         <label for="ci">Check-in</label>
-        <input type="date" id="ci" required />
+        <input type="text" id="ci" required readonly />
       </div>
       <div class="bk-cell">
         <label for="co">Check-out</label>
-        <input type="date" id="co" required />
+        <input type="text" id="co" required readonly />
       </div>
       <div class="bk-cell">
         <label for="gs">Hóspedes</label>
@@ -754,6 +793,8 @@
   <a href="#reservar" class="btn">Reservar</a>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/pt.js"></script>
 <script>
   /* nav sólida ao rolar */
   var hd = document.getElementById('hd');
@@ -777,22 +818,50 @@
     });
   });
 
-  /* datas */
+  /* datas — seletor flatpickr tematizado, com fallback nativo */
   var ci=document.getElementById('ci'), co=document.getElementById('co');
-  function fmt(d){return d.toISOString().split('T')[0];}
-  var t=new Date(), tm=new Date(); tm.setDate(t.getDate()+1);
-  ci.min=fmt(t); ci.value=fmt(t);
-  co.min=fmt(tm); co.value=fmt(tm);
-  ci.addEventListener('change',function(){
-    var n=new Date(ci.value); n.setDate(n.getDate()+1);
-    co.min=fmt(n); if(co.value<=ci.value) co.value=fmt(n);
-  });
+  var ciPicker=null, coPicker=null;
+  function pad(n){return String(n).padStart(2,'0');}
+  function isoDate(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+  (function(){
+    var hoje=new Date(); hoje.setHours(0,0,0,0);
+    var amanha=new Date(hoje); amanha.setDate(hoje.getDate()+1);
+    if(!window.flatpickr){
+      ci.type='date'; co.type='date';
+      ci.removeAttribute('readonly'); co.removeAttribute('readonly');
+      ci.min=isoDate(hoje); ci.value=isoDate(hoje);
+      co.min=isoDate(amanha); co.value=isoDate(amanha);
+      ci.addEventListener('change',function(){
+        var n=new Date(ci.value+'T00:00:00'); n.setDate(n.getDate()+1);
+        co.min=isoDate(n); if(co.value<=ci.value) co.value=isoDate(n);
+      });
+      return;
+    }
+    var base={locale:'pt',dateFormat:'d/m/Y',disableMobile:true,monthSelectorType:'static'};
+    coPicker=flatpickr(co,Object.assign({},base,{minDate:amanha,defaultDate:amanha}));
+    ciPicker=flatpickr(ci,Object.assign({},base,{minDate:hoje,defaultDate:hoje,
+      onChange:function(sel){
+        if(!sel[0])return;
+        var min=new Date(sel[0]); min.setDate(min.getDate()+1);
+        coPicker.set('minDate',min);
+        if(!coPicker.selectedDates[0]||coPicker.selectedDates[0]<=sel[0]) coPicker.setDate(min,true);
+      }
+    }));
+  })();
 
   /* envio ao motor de reservas (Omnibees) — confirmar deep-link da unidade */
   function goBooking(){
+    var inIso, outIso;
+    if(ciPicker&&coPicker){
+      if(!ciPicker.selectedDates[0]||!coPicker.selectedDates[0])return;
+      inIso=isoDate(ciPicker.selectedDates[0]); outIso=isoDate(coPicker.selectedDates[0]);
+    }else{
+      if(!ci.value||!co.value)return;
+      inIso=ci.value; outIso=co.value;
+    }
     var base='https://reservas.hotelpontaverde.com.br/';
-    var qs='Checkin='+encodeURIComponent(ci.value)
-          +'&Checkout='+encodeURIComponent(co.value)
+    var qs='Checkin='+encodeURIComponent(inIso)
+          +'&Checkout='+encodeURIComponent(outIso)
           +'&Adults='+encodeURIComponent(document.getElementById('gs').value);
     window.open(base+'?'+qs,'_blank','noopener');
   }
