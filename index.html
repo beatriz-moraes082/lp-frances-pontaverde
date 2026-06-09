@@ -208,6 +208,10 @@
     content:"";position:absolute;inset:0;z-index:0;
     background:linear-gradient(180deg,rgba(40,28,15,.10) 30%,rgba(40,28,15,.74) 100%);
   }
+  /* dobra com foto clara (Fateixa): escurece mais a base para o texto ficar legível */
+  .fold.fold-tint::after{
+    background:linear-gradient(180deg,rgba(40,28,15,.06) 12%,rgba(40,28,15,.42) 46%,rgba(40,28,15,.82) 80%,rgba(40,28,15,.95) 100%);
+  }
   .fold-tx{position:relative;z-index:1;padding:0 44px 72px;max-width:1380px;margin:0 auto;width:100%;}
   .fold-tx .kicker{color:var(--olive);}
   .fold-tx h2{
@@ -546,11 +550,11 @@
 </section>
 
 <!-- ================= DOBRA 2 · RESTAURANTE FATEIXA ================= -->
-<section class="fold right">
-  <div class="fold-bg" style="background-image:url('img/fateixa.jpg');background-position:center 55%;"></div>
+<section class="fold right fold-tint">
+  <div class="fold-bg" style="background-image:url('img/restaurante.jpg');background-position:center 50%;"></div>
   <div class="fold-tx rv">
     <span class="kicker">Restaurante Fateixa</span>
-    <h2>A cozinha que <em>celebra Alagoas.</em></h2>
+    <h2>A cozinha que <em>celebra Marechal Deodoro.</em></h2>
     <a href="https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896" target="_blank" rel="noopener" class="btn light fold-cta">Reservar</a>
   </div>
 </section>
