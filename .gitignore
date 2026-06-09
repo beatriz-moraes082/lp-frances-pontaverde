@@ -1,1 +1,5 @@
 .DS_Store
+
+# vídeos-fonte (drone, brutos) na raiz — não versionar, são pesados
+/*.MP4
+/*.mp4
