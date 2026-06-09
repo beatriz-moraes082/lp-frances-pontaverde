@@ -274,7 +274,7 @@
   .sv-track{display:flex;gap:6px;flex:none;}
   .sv-card{
     flex:none;width:198px;padding:16px 14px;text-align:center;
-    scroll-snap-align:center;
+    scroll-snap-align:start;
   }
   .sv-card .sv-ic{width:32px;height:32px;margin:0 auto 14px;color:var(--terra);}
   .sv-card .sv-ic svg{width:100%;height:100%;display:block;}
@@ -596,16 +596,6 @@
   </div>
 </section>
 
-<!-- ================= DOBRA 4 · EXPERIÊNCIAS ROMÂNTICAS ================= -->
-<section class="fold right">
-  <div class="fold-bg" style="background-image:url('img/romantica-casal.jpg');background-position:center 62%;"></div>
-  <div class="fold-tx rv">
-    <span class="kicker">Experiências românticas</span>
-    <h2>A dois, <em>sem pressa, sem plateia.</em></h2>
-    <a href="https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896" target="_blank" rel="noopener" class="btn light fold-cta">Reservar</a>
-  </div>
-</section>
-
 <!-- ================= DOBRA 5 · SURF ================= -->
 <section class="fold">
   <div class="fold-bg" style="background-image:url('img/praia-caminhada.jpg');background-position:center 70%;"></div>
@@ -880,15 +870,19 @@
     var next=document.getElementById('svNext');
     if(!row||!prev||!next) return;
     var cards=row.querySelectorAll('.sv-card');
+    var GAP=6, perView=1;
     function fitCards(){
-      /* no mobile cada card ocupa a largura exata do trilho:
-         1 card por vez, sempre centrado (inclusive o 1º e o último) */
-      var w=window.innerWidth<=860?row.clientWidth+'px':'';
-      cards.forEach(function(c){ c.style.width=w; });
+      /* largura exata p/ caber um nº inteiro de cards na faixa, sem cortar
+         as laterais: 1 no celular, 2 no tablet, ~200px no desktop */
+      var rw=row.clientWidth;
+      var target=window.innerWidth<=560?rw:window.innerWidth<=860?(rw-GAP)/2:200;
+      perView=Math.max(1,Math.round(rw/(target+GAP)));
+      var w=(rw-(perView-1)*GAP)/perView;
+      cards.forEach(function(c){ c.style.width=w+'px'; });
     }
     function step(){
-      var cw=(cards[0]?cards[0].offsetWidth:200)+6;
-      return cw*Math.max(1,Math.floor(row.clientWidth/cw));
+      var cw=(cards[0]?cards[0].getBoundingClientRect().width:200)+GAP;
+      return cw*perView;
     }
     function update(){
       prev.disabled = row.scrollLeft <= 2;
