@@ -28,8 +28,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" />
-
 <style>
   :root{
     --cream:#fbf6f2;
@@ -148,37 +146,11 @@
   }
   .hero h1 em{color:var(--olive);font-weight:300;}
 
-  /* booking bar slim */
-  .bookbar{
-    display:flex;align-items:stretch;flex-wrap:wrap;
-    background:rgba(40,28,15,.40);backdrop-filter:blur(14px);
-    border:1px solid rgba(251,246,242,.30);
-  }
-  .bk-cell{
-    flex:1;min-width:150px;padding:15px 22px;
-    border-right:1px solid rgba(251,246,242,.22);
-  }
-  .bk-cell label{
-    display:block;font-size:.62rem;font-weight:600;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--olive);margin-bottom:5px;
-  }
-  .bk-cell input,.bk-cell select{
-    width:100%;background:transparent;border:0;color:#fff;
-    font-family:'Fraunces',serif;font-size:1.12rem;font-weight:400;cursor:pointer;
-  }
-  .bk-cell select option{color:var(--ink);}
-  .bk-cell input:focus,.bk-cell select:focus{outline:none;}
-  .bk-cell input::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.6;cursor:pointer;}
-  .bookbar button{
-    border:0;background:var(--terra);color:#fff;cursor:pointer;
-    padding:0 44px;font-family:'Hanken Grotesk',sans-serif;
-    font-size:.76rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-    transition:.3s;
-  }
-  .bookbar button:hover{background:var(--brown-deep);}
   .hero-note{
     margin-top:14px;font-size:.76rem;letter-spacing:.04em;color:rgba(251,246,242,.72);
   }
+  /* motor de reservas Niara — container do widget embutido */
+  .niara-widget{min-height:64px;color:var(--cream);font-size:.9rem;letter-spacing:.04em;}
 
   /* ---------- SEÇÃO MANIFESTO ---------- */
   .manifesto{padding:clamp(90px,15vw,180px) 44px;text-align:center;}
@@ -397,12 +369,6 @@
     .burger{display:flex;}
     .hero-inner,.fold-tx{padding-left:22px;padding-right:22px;}
     .manifesto,.rooms,.quote,.direct,footer{padding-left:22px;padding-right:22px;}
-    .bookbar{display:grid;grid-template-columns:1fr 1fr;}
-    .bk-cell{border-right:0;border-bottom:1px solid rgba(251,246,242,.22);min-width:0;padding:14px 16px;}
-    .bk-cell input,.bk-cell select{font-size:1rem;}
-    .bk-cell:first-child{border-right:1px solid rgba(251,246,242,.22);}
-    .bk-cell:nth-child(3){grid-column:1 / -1;}
-    .bookbar button{grid-column:1 / -1;padding:18px;}
     .fold{min-height:80vh;}
     .fold.right .fold-tx{text-align:left;}
     .mbar{display:flex;transform:translateY(110%);transition:transform .35s cubic-bezier(.16,.7,.2,1);}
@@ -429,44 +395,6 @@
     .hero-inner{padding-bottom:38px;}
     .quote .score{flex-direction:column;gap:6px;text-align:center;}
     .quote .score .t{text-align:center;}
-  }
-
-  /* ---------- SELETOR DE DATA · tema Ponta Verde ---------- */
-  .flatpickr-calendar{
-    background:var(--cream);border:1px solid var(--line);border-radius:0;
-    box-shadow:0 20px 54px rgba(40,28,15,.26);
-    font-family:'Hanken Grotesk',sans-serif;
-  }
-  .flatpickr-calendar.arrowTop:after,.flatpickr-calendar.arrowBottom:after{
-    border-bottom-color:var(--cream);border-top-color:var(--cream);
-  }
-  .flatpickr-calendar.arrowTop:before,.flatpickr-calendar.arrowBottom:before{
-    border-bottom-color:var(--line);border-top-color:var(--line);
-  }
-  .flatpickr-months .flatpickr-month{color:var(--brown-deep);}
-  .flatpickr-current-month{padding-top:8px;}
-  .flatpickr-current-month .cur-month,
-  .flatpickr-current-month input.cur-year{
-    font-family:'Fraunces',serif;font-weight:400;color:var(--brown-deep);
-  }
-  .flatpickr-months .flatpickr-prev-month,
-  .flatpickr-months .flatpickr-next-month{color:var(--brown-deep);fill:var(--brown-deep);}
-  .flatpickr-months .flatpickr-prev-month:hover svg,
-  .flatpickr-months .flatpickr-next-month:hover svg{fill:var(--terra);}
-  span.flatpickr-weekday{
-    color:var(--terra);font-weight:600;font-size:.68rem;
-    letter-spacing:.08em;text-transform:uppercase;
-  }
-  .flatpickr-day{color:var(--ink);border-radius:0;font-weight:400;}
-  .flatpickr-day:hover,.flatpickr-day:focus{background:var(--sand);border-color:var(--sand);}
-  .flatpickr-day.today{border-color:var(--olive);}
-  .flatpickr-day.today:hover{background:var(--sand);color:var(--ink);}
-  .flatpickr-day.selected,.flatpickr-day.selected:hover{
-    background:var(--terra);border-color:var(--terra);color:#fff;
-  }
-  .flatpickr-day.flatpickr-disabled,
-  .flatpickr-day.prevMonthDay,.flatpickr-day.nextMonthDay{
-    color:var(--ink-soft);opacity:.38;
   }
 </style>
 </head>
@@ -503,27 +431,8 @@
     <span class="kicker">Praia do Francês · Alagoas</span>
     <h1>Acorde com <em>o mar.</em></h1>
 
-    <!-- WIDGET DE RESERVA -->
-    <form class="bookbar" id="bookingForm" aria-label="Reservar">
-      <div class="bk-cell">
-        <label for="ci">Check-in</label>
-        <input type="text" id="ci" required readonly />
-      </div>
-      <div class="bk-cell">
-        <label for="co">Check-out</label>
-        <input type="text" id="co" required readonly />
-      </div>
-      <div class="bk-cell">
-        <label for="gs">Hóspedes</label>
-        <select id="gs">
-          <option value="2">2 hóspedes</option>
-          <option value="1">1 hóspede</option>
-          <option value="3">3 hóspedes</option>
-          <option value="4">4 hóspedes</option>
-        </select>
-      </div>
-      <button type="submit">Reservar</button>
-    </form>
+    <!-- MOTOR DE RESERVA · widget Niara / Otabuilder -->
+    <div id="otabuilder-widget" class="niara-widget">Carregando…</div>
     <p class="hero-note">Viva experiências únicas à beira-mar!</p>
   </div>
 </section>
@@ -790,8 +699,6 @@
   <a href="https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896" target="_blank" rel="noopener" class="btn">Reservar</a>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/pt.js"></script>
 <script>
   /* nav sólida ao rolar */
   var hd = document.getElementById('hd');
@@ -815,59 +722,16 @@
     });
   });
 
-  /* datas — seletor flatpickr tematizado, com fallback nativo */
-  var ci=document.getElementById('ci'), co=document.getElementById('co');
-  var ciPicker=null, coPicker=null;
-  function pad(n){return String(n).padStart(2,'0');}
-  function isoDate(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+  /* CTA "Reservar agora" do final → rola até o motor de reservas (Niara) no topo */
   (function(){
-    var hoje=new Date(); hoje.setHours(0,0,0,0);
-    var amanha=new Date(hoje); amanha.setDate(hoje.getDate()+1);
-    if(!window.flatpickr){
-      ci.type='date'; co.type='date';
-      ci.removeAttribute('readonly'); co.removeAttribute('readonly');
-      ci.min=isoDate(hoje); ci.value=isoDate(hoje);
-      co.min=isoDate(amanha); co.value=isoDate(amanha);
-      ci.addEventListener('change',function(){
-        var n=new Date(ci.value+'T00:00:00'); n.setDate(n.getDate()+1);
-        co.min=isoDate(n); if(co.value<=ci.value) co.value=isoDate(n);
-      });
-      return;
-    }
-    var base={locale:'pt',dateFormat:'d/m/Y',disableMobile:true,monthSelectorType:'static'};
-    coPicker=flatpickr(co,Object.assign({},base,{minDate:amanha,defaultDate:amanha}));
-    ciPicker=flatpickr(ci,Object.assign({},base,{minDate:hoje,defaultDate:hoje,
-      onChange:function(sel){
-        if(!sel[0])return;
-        var min=new Date(sel[0]); min.setDate(min.getDate()+1);
-        coPicker.set('minDate',min);
-        if(!coPicker.selectedDates[0]||coPicker.selectedDates[0]<=sel[0]) coPicker.setDate(min,true);
-      }
-    }));
+    var finalCta=document.getElementById('finalCta');
+    if(!finalCta) return;
+    finalCta.addEventListener('click',function(e){
+      e.preventDefault();
+      var top=document.getElementById('top');
+      if(top) top.scrollIntoView({behavior:'smooth'});
+    });
   })();
-
-  /* envio ao motor de reservas (Omnibees) — confirmar deep-link da unidade */
-  function goBooking(){
-    var inIso, outIso;
-    if(ciPicker&&coPicker){
-      if(!ciPicker.selectedDates[0]||!coPicker.selectedDates[0])return;
-      inIso=isoDate(ciPicker.selectedDates[0]); outIso=isoDate(coPicker.selectedDates[0]);
-    }else{
-      if(!ci.value||!co.value)return;
-      inIso=ci.value; outIso=co.value;
-    }
-    var base='https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896';
-    var qs='Checkin='+encodeURIComponent(inIso)
-          +'&Checkout='+encodeURIComponent(outIso)
-          +'&Adults='+encodeURIComponent(document.getElementById('gs').value);
-    window.open(base+'?'+qs,'_blank','noopener');
-  }
-  document.getElementById('bookingForm').addEventListener('submit',function(e){
-    e.preventDefault(); goBooking();
-  });
-  document.getElementById('finalCta').addEventListener('click',function(e){
-    e.preventDefault(); goBooking();
-  });
 
   /* carrossel de serviços — navegação por setas */
   (function(){
@@ -926,6 +790,49 @@
     window.addEventListener('resize',update);
     update();
   })();
+</script>
+
+<!-- ================= MOTOR DE RESERVA · Niara / Otabuilder ================= -->
+<script>
+  function loadJS(url, location) {
+    var scriptTag = document.createElement('script')
+    scriptTag.src = url
+    scriptTag.crossOrigin = 'anonymous'
+    scriptTag.defer = true
+    scriptTag.async = true
+    location.appendChild(scriptTag)
+  }
+  function initOtabuilderWidget(storefrontId, elementId, ga4MeasurementId) {
+    var niaraNavVar = '_OTABUILDER_EMBEDDED_SEARCH_INIT_'
+    var loaded = false
+    var initFunction = function (initSearchForm) {
+      if (!loaded) {
+        loaded = true
+        initSearchForm(document.getElementById(elementId), {
+          storefrontId: storefrontId,
+          ga4MeasurementId: ga4MeasurementId,
+        })
+      }
+    }
+    if (window[niaraNavVar]) {
+      initFunction(window[niaraNavVar])
+    } else {
+      var listener = function (e) {
+        initFunction(e.detail.initSearchForm)
+      }
+      document.addEventListener('otabuilder-search-ready', listener)
+    }
+  }
+
+  initOtabuilderWidget(
+    '463c1bd0-0062-4aea-b27d-aeb6d3e7f124' /** storefrontId */,
+    'otabuilder-widget' /** widget container */,
+    null /** Para analytics cross-domain, troque null pelo id do stream (ex: 'G-PN35XXXXTK') */
+  )
+  loadJS(
+    'https://app.otabuilder.com/static/js/widget.js' /** widget Js Url */,
+    document.body /** script tag parent */
+  )
 </script>
 </body>
 </html>
