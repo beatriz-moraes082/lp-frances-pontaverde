@@ -110,11 +110,13 @@
   .nav-r nav a:hover{color:var(--terra);}
   .nav-btn{
     font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-    padding:12px 26px;border:1px solid var(--cream);color:var(--cream);transition:.3s;
+    padding:12px 26px;border:1px solid var(--terra);
+    background:var(--terra);color:var(--cream);transition:.3s;
+    box-shadow:0 2px 14px rgba(40,28,15,.28);
   }
-  header.solid .nav-btn{border-color:var(--brown-deep);color:var(--brown-deep);}
-  .nav-btn:hover{background:var(--cream);color:var(--brown-deep);}
-  header.solid .nav-btn:hover{background:var(--brown-deep);color:var(--cream);}
+  header.solid .nav-btn{border-color:var(--terra);background:var(--terra);color:var(--cream);box-shadow:none;}
+  .nav-btn:hover{background:var(--brown-deep);border-color:var(--brown-deep);color:var(--cream);}
+  header.solid .nav-btn:hover{background:var(--brown-deep);border-color:var(--brown-deep);color:var(--cream);}
   .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
   .burger span{width:24px;height:1.6px;background:var(--cream);transition:.3s;}
   header.solid .burger span{background:var(--brown-deep);}
@@ -522,7 +524,7 @@
       </div>
       <button type="submit">Reservar</button>
     </form>
-    <p class="hero-note">O único pé na areia da Praia do Francês · melhor tarifa garantida na reserva direta</p>
+    <p class="hero-note">Viva experiências únicas à beira-mar!</p>
   </div>
 </section>
 
@@ -616,7 +618,6 @@
       <span class="kicker">Acomodações</span>
       <h2>Escolha <em>como acordar.</em></h2>
     </div>
-    <p>Tarifas de baixa temporada, as menores do ano.</p>
   </div>
 
   <!-- PREÇOS: placeholders. Atualizar com a tarifa real de baixa temporada. -->
@@ -628,7 +629,6 @@
       <h3>Aconchego</h3>
       <p class="ln">Cama king, varanda e o verde para abrir o dia com calma.</p>
       <div class="ft">
-        <span class="pr"><small>A partir de</small><b>R$ 549</b></span>
         <a href="https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896" target="_blank" rel="noopener" class="link-arrow">Reservar →</a>
       </div>
     </article>
@@ -640,7 +640,6 @@
       <h3>Vila</h3>
       <p class="ln">Mais espaço e a atmosfera de casa de praia que faz voltar.</p>
       <div class="ft">
-        <span class="pr"><small>A partir de</small><b>R$ 689</b></span>
         <a href="https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896" target="_blank" rel="noopener" class="link-arrow">Reservar →</a>
       </div>
     </article>
@@ -652,7 +651,6 @@
       <h3>Frente Mar</h3>
       <p class="ln">O mar como primeira e última imagem do dia. Poucas unidades.</p>
       <div class="ft">
-        <span class="pr"><small>A partir de</small><b>R$ 899</b></span>
         <a href="https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896" target="_blank" rel="noopener" class="link-arrow">Reservar →</a>
       </div>
     </article>
@@ -678,7 +676,7 @@
           <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 2.5 14.6 0 17M12 3.5c-2.5 2.4-2.5 14.6 0 17"/></svg></div><h4>Equipe multilíngue</h4><p>Atendimento caloroso em vários idiomas.</p></div>
           <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4.5" r="1.8"/><path d="M10 8.5h5M11 8l1 6h6l2.5 5.5M11.5 14a4.5 4.5 0 1 0 5.2 4.4"/></svg></div><h4>Cadeira de rodas</h4><p>Mobilidade pensada para todos.</p></div>
           <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9v12M5 3v6a2 2 0 0 0 4 0V3M16.5 21V12M16.5 12c-2 0-3-1.2-3-4S15 3 16.5 3v9"/></svg></div><h4>Restaurante</h4><p>Gastronomia que celebra Alagoas.</p></div>
-          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="16.5" r="3.3"/><circle cx="18" cy="16.5" r="3.3"/><path d="M6 16.5 10.5 9H16M18 16.5 13.5 9M10 9 8.7 6H6.5"/></svg></div><h4>Aluguel de bicicleta</h4><p>Pedale pela orla do Francês.</p></div>
+          <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="16.5" r="3.3"/><circle cx="18" cy="16.5" r="3.3"/><path d="M6 16.5 10.5 9H16M18 16.5 13.5 9M10 9 8.7 6H6.5"/></svg></div><h4>Aluguel de bicicleta</h4><p>Pedale pela orla da Praia do Francês.</p></div>
           <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="8" rx="1.5"/><path d="M6 9h9M6.5 16.5c0 1.5 1.2 1.5 1.2 3M11.5 16.5c0 1.5 1.2 1.5 1.2 3M16.5 16.5c0 1.5 1.2 1.5 1.2 3"/></svg></div><h4>Ar-condicionado</h4><p>Clima do quarto sob seu controle.</p></div>
           <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><circle cx="11" cy="12" r="3.4"/><path d="M11 12h3.5M6.5 20v1.5M17 20v1.5"/></svg></div><h4>Cofre</h4><p>Seus pertences sempre protegidos.</p></div>
           <div class="sv-card"><div class="sv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.5h4v2.5l1.3 2.2V20a1 1 0 0 1-1 1H9.7a1 1 0 0 1-1-1V8.2L10 6z"/><path d="M8.7 11h6.6"/></svg></div><h4>Amenidades</h4><p>Itens de banho de cortesia.</p></div>
@@ -727,7 +725,7 @@
   <div class="rooms-head rv">
     <div>
       <span class="kicker">Experiências locais</span>
-      <h2>O Francês <em>vai além da praia.</em></h2>
+      <h2>A Praia do Francês <em>vai muito além do mar.</em></h2>
     </div>
     <p>A natureza viva da região, a poucos minutos do hotel.</p>
   </div>
@@ -756,7 +754,7 @@
   <div class="inner rv">
     <span class="kicker">Sua estadia espera</span>
     <h2>Maio e junho <em>pedem mar.</em></h2>
-    <p>A melhor diária do ano, no único pé na areia da Praia do Francês.</p>
+    <p>O único pé na areia da Praia do Francês.</p>
     <a href="#" class="btn solid-light" id="finalCta">Reservar agora</a>
   </div>
 </section>
@@ -782,14 +780,14 @@
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 Hotéis Ponta Verde · Maceió &amp; Francês</span>
+    <span>© 2026 Hotéis Ponta Verde · Maceió &amp; Praia do Francês</span>
     <span>Tradição em hospitalidade desde 1980</span>
   </div>
 </footer>
 
 <!-- ================= BARRA MOBILE ================= -->
 <div class="mbar">
-  <div class="mp"><small>A partir de</small><br><b>R$ 549</b> <span style="font-size:.78rem;color:var(--ink-soft);">/ noite</span></div>
+  <div class="mp"><small>À beira-mar</small><br><b>Pé na areia</b></div>
   <a href="https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896" target="_blank" rel="noopener" class="btn">Reservar</a>
 </div>
 
