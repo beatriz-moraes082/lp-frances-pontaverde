@@ -320,10 +320,11 @@
   .quote blockquote{
     font-family:'Fraunces',serif;font-weight:300;font-style:italic;
     font-size:clamp(1.6rem,3.6vw,2.9rem);line-height:1.36;color:var(--brown-deep);
+    transition:opacity .42s ease;
   }
   .quote .by{
     margin-top:34px;font-size:.72rem;font-weight:600;letter-spacing:.24em;
-    text-transform:uppercase;color:var(--terra);
+    text-transform:uppercase;color:var(--terra);transition:opacity .42s ease;
   }
   .quote .score{
     margin-top:54px;display:inline-flex;align-items:center;gap:18px;
@@ -631,6 +632,7 @@
       <div class="ph" style="background-image:url('img/quarto-aconchego.jpg');background-position:center 60%;">
       </div>
       <h3>Aconchego</h3>
+      <p class="ln">Cama king, e varanda para abrir o dia com calma.</p>
       <div class="ft">
         <a href="https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896" target="_blank" rel="noopener" class="link-arrow">Reservar →</a>
       </div>
@@ -732,11 +734,11 @@
 <section class="quote">
   <div class="inner rv">
     <div class="stars">★★★★★</div>
-    <blockquote>"Acordar com o som do mar não tem preço. E o melhor café da manhã que já tive na vida."</blockquote>
-    <div class="by">Mariana R. · hóspede verificada no Booking</div>
+    <blockquote id="rvQuote">"Paraíso na terra! Hotel pé na areia maravilhoso, sax divino no fim de tarde em frente ao mar e café da manhã espetacular."</blockquote>
+    <div class="by" id="rvBy">Ana · Brasil · nota 10 no Booking</div>
     <div class="score">
       <span class="n">9,4</span>
-      <span class="t">Fantástico no Booking<br>Avaliação dos hóspedes</span>
+      <span class="t">Fantástico no Booking<br>1.475 avaliações</span>
     </div>
   </div>
 </section>
@@ -748,7 +750,7 @@
       <span class="kicker">Experiências locais</span>
       <h2>A Praia do Francês <em>vai muito além do mar.</em></h2>
     </div>
-    <p>A natureza viva da região, a poucos minutos do hotel.</p>
+    <p>A natureza viva da região, a poucos passos do hotel.</p>
   </div>
   <div class="room-grid">
     <a class="room rv" href="https://www.hotelpontaverde.com.br/mergulho-em-alagoas-na-praia-do-frances" target="_blank" rel="noopener">
@@ -941,6 +943,32 @@
     en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
   },{threshold:.16});
   document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* carrossel de avaliações — mesmo layout, alterna entre depoimentos reais (Booking) */
+  (function(){
+    var qEl=document.getElementById('rvQuote'), bEl=document.getElementById('rvBy');
+    if(!qEl||!bEl) return;
+    var reviews=[
+      {q:'"Paraíso na terra! Hotel pé na areia maravilhoso, sax divino no fim de tarde em frente ao mar e café da manhã espetacular."', by:'Ana · Brasil · nota 10 no Booking'},
+      {q:'"Gostamos de tudo: das instalações, do ótimo atendimento, do excelente café da manhã. Voltaremos muitas outras vezes."', by:'Renato · Brasil · nota 10 no Booking'},
+      {q:'"Realizei um evento para 27 pessoas e o aniversário de 90 anos da minha mãe. Com pessoas tão atenciosas, ficou tudo perfeito."', by:'Mônica · Brasil · nota 10 no Booking'},
+      {q:'"Ótima estadia, com uma localização excelente."', by:'Danifal77 · Brasil · nota 9 no Booking'}
+    ];
+    /* ordem aleatória a cada carregamento */
+    for(var i=reviews.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=reviews[i]; reviews[i]=reviews[j]; reviews[j]=t; }
+    var idx=0;
+    qEl.textContent=reviews[0].q; bEl.textContent=reviews[0].by;
+    function go(n){
+      qEl.style.opacity=0; bEl.style.opacity=0;
+      setTimeout(function(){
+        qEl.textContent=reviews[n].q; bEl.textContent=reviews[n].by;
+        qEl.style.opacity=1; bEl.style.opacity=1;
+      },430);
+    }
+    if(reviews.length>1){
+      setInterval(function(){ idx=(idx+1)%reviews.length; go(idx); },6500);
+    }
+  })();
 
   /* parallax de rolagem — funciona no mobile (transform, sem background-fixed) */
   (function(){
