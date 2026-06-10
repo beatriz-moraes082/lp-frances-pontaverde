@@ -449,7 +449,13 @@
   .mbar .mp{line-height:1.15;}
   .mbar .mp small{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);}
   .mbar .mp b{font-family:'Fraunces',serif;font-weight:400;font-size:1.32rem;color:var(--brown-deep);}
-  .mbar .btn{flex:1;max-width:210px;padding:15px 20px;}
+  .mbar .btn{
+    flex:1;max-width:210px;padding:15px 20px;
+    background:var(--olive);border-color:var(--olive);color:var(--brown-deep);
+  }
+  .mbar .btn:hover,.mbar .btn:active{
+    background:var(--olive);border-color:var(--olive);color:var(--brown-deep);
+  }
 
   /* ---------- REVEAL ---------- */
   .rv{opacity:0;transform:translateY(30px);transition:1s cubic-bezier(.16,.7,.2,1);}
