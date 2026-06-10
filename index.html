@@ -223,6 +223,37 @@
   .fold.right .fold-tx h2{margin-left:auto;}
   .fold-cta{margin-top:30px;}
 
+  /* ---------- OS DOIS LADOS DA PRAIA (díptico) ---------- */
+  .duo{background:var(--cream);}
+  .duo-head{text-align:center;padding:clamp(60px,9vw,110px) 44px clamp(32px,5vw,52px);}
+  .duo-head .kicker{color:var(--terra);}
+  .duo-head h2{
+    font-family:'Fraunces',serif;font-weight:300;color:var(--brown-deep);
+    font-size:clamp(2rem,4.4vw,3.4rem);margin-top:14px;letter-spacing:-.01em;
+  }
+  .duo-head h2 em{color:var(--terra);}
+  .duo-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .duo-side{
+    position:relative;min-height:74vh;display:flex;align-items:flex-end;
+    color:var(--cream);overflow:hidden;
+  }
+  .duo-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+  .duo-side::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(40,28,15,.05) 32%,rgba(40,28,15,.82) 100%);
+  }
+  .duo-tx{position:relative;z-index:1;padding:0 40px 54px;max-width:30ch;}
+  .duo-tx .kicker{color:var(--olive);}
+  .duo-tx h3{
+    font-family:'Fraunces',serif;font-weight:300;color:#fff;
+    font-size:clamp(1.7rem,2.5vw,2.4rem);line-height:1.14;margin-top:14px;
+  }
+  @media(max-width:860px){
+    .duo-grid{grid-template-columns:1fr;}
+    .duo-side{min-height:56vh;}
+    .duo-tx{padding:0 22px 40px;}
+  }
+
   /* ---------- ACOMODAÇÕES ---------- */
   .rooms{padding:clamp(80px,12vw,150px) 44px clamp(40px,5vw,58px);}
   .rooms-head{
@@ -615,12 +646,27 @@
   </div>
 </section>
 
-<!-- ================= DOBRA 5 · SURF ================= -->
-<section class="fold">
-  <div class="fold-bg" style="background-image:url('img/praia-caminhada.jpg');background-position:center 70%;"></div>
-  <div class="fold-tx rv">
+<!-- ================= OS DOIS LADOS DA PRAIA ================= -->
+<section class="duo" id="dois-lados">
+  <div class="duo-head rv">
     <span class="kicker">Praia do Francês</span>
-    <h2>A onda mora <em>na sua porta.</em></h2>
+    <h2>Dois lados, <em>dois ritmos.</em></h2>
+  </div>
+  <div class="duo-grid">
+    <div class="duo-side rv">
+      <div class="duo-bg" style="background-image:url('img/hero-poster.jpg');"></div>
+      <div class="duo-tx">
+        <span class="kicker">Perfeito para o banho</span>
+        <h3>Águas calmas e piscinas naturais.</h3>
+      </div>
+    </div>
+    <div class="duo-side rv">
+      <div class="duo-bg" style="background-image:url('img/onda.jpg');background-position:center 45%;"></div>
+      <div class="duo-tx">
+        <span class="kicker">Perfeito para o surf</span>
+        <h3>A onda mora na sua porta.</h3>
+      </div>
+    </div>
   </div>
 </section>
 
