@@ -246,6 +246,17 @@
   .room .ph .tag.hot{background:var(--terra);color:#fff;}
   .room h3{font-size:1.7rem;color:var(--brown-deep);margin:24px 0 6px;}
   .room .ln{color:var(--ink-soft);font-size:.95rem;margin-bottom:18px;}
+  /* placeholder de foto (experiência sem imagem ainda) */
+  .room .ph.placeholder{
+    background:var(--sand);display:flex;align-items:center;justify-content:center;
+  }
+  .room .ph.placeholder::after{
+    content:"Foto em breve";font-family:'Hanken Grotesk',sans-serif;
+    font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-soft);opacity:.55;
+  }
+  a.room .link-arrow{margin-top:2px;}
+  a.room:hover .link-arrow{gap:14px;}
   .room .ft{
     display:flex;justify-content:space-between;align-items:baseline;
     padding-top:18px;border-top:1px solid var(--line);
@@ -740,20 +751,33 @@
     <p>A natureza viva da região, a poucos minutos do hotel.</p>
   </div>
   <div class="room-grid">
-    <article class="room rv">
-      <div class="ph" style="background-image:url('img/exp-mangue.jpg');"></div>
-      <h3>Manguezais</h3>
-      <p class="ln">Trilhas de mangue preservado, num dos ecossistemas mais vivos de Alagoas.</p>
-    </article>
-    <article class="room rv">
-      <div class="ph" style="background-image:url('img/exp-ostra.jpg');"></div>
-      <h3>Cultivo de ostras</h3>
-      <p class="ln">Visite as fazendas de ostras e prove a iguaria fresca, direto da fonte.</p>
-    </article>
+    <a class="room rv" href="https://www.hotelpontaverde.com.br/mergulho-em-alagoas-na-praia-do-frances" target="_blank" rel="noopener">
+      <div class="ph placeholder"></div>
+      <h3>Mergulho</h3>
+      <span class="link-arrow">Saiba mais →</span>
+    </a>
+    <a class="room rv" href="https://www.hotelpontaverde.com.br/reino-da-alegria-o-surf-na-praia-do-frances" target="_blank" rel="noopener">
+      <div class="ph placeholder"></div>
+      <h3>Surf</h3>
+      <span class="link-arrow">Saiba mais →</span>
+    </a>
     <article class="room rv">
       <div class="ph" style="background-image:url('img/exp-barco.jpg');"></div>
       <h3>Passeio de barco</h3>
-      <p class="ln">Navegue pelos canais de mangue e veja a Praia do Francês pela água.</p>
+    </article>
+    <a class="room rv" href="https://www.hotelpontaverde.com.br/5-experiencias-para-conhecer-a-cultura-de-marechal-deodoro" target="_blank" rel="noopener">
+      <div class="ph placeholder"></div>
+      <h3>Centro histórico</h3>
+      <span class="link-arrow">Saiba mais →</span>
+    </a>
+    <a class="room rv" href="http://hotelpontaverde.com.br/la-rue-descubra-as-atracoes" target="_blank" rel="noopener">
+      <div class="ph placeholder"></div>
+      <h3>La rue</h3>
+      <span class="link-arrow">Saiba mais →</span>
+    </a>
+    <article class="room rv">
+      <div class="ph placeholder"></div>
+      <h3>Esportes aquáticos</h3>
     </article>
   </div>
 </section>
