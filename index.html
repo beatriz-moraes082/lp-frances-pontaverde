@@ -264,10 +264,17 @@
       background:linear-gradient(180deg,rgba(40,28,15,.4) 0%,rgba(40,28,15,.88) 100%);
     }
   }
+  @keyframes duoZoom{from{transform:scale(1);}to{transform:scale(1.1);}}
   @media(max-width:860px){
     .duo-grid{flex-direction:column;}
     .duo-grid .duo-side{min-height:56vh;}
     .duo-tx{padding:0 22px 40px;}
+    /* sem hover no touch: zoom lento contínuo (Ken Burns) pra ter movimento */
+    .duo-bg{animation:duoZoom 16s ease-in-out infinite alternate;}
+    .duo-grid .duo-side:last-child .duo-bg{animation-delay:-8s;}
+  }
+  @media(max-width:860px) and (prefers-reduced-motion:reduce){
+    .duo-bg{animation:none;}
   }
 
   /* ---------- ACOMODAÇÕES ---------- */
@@ -890,7 +897,7 @@
 
 <!-- ================= BARRA MOBILE ================= -->
 <div class="mbar">
-  <div class="mp"><b>Reserve com a melhor tarifa</b></div>
+  <div class="mp"><b>Reserve com a<br>melhor tarifa</b></div>
   <a href="https://reservas.hotelpontaverde.com.br/hotels/HOTEL_OMNI_1896" target="_blank" rel="noopener" class="btn">Reservar</a>
 </div>
 
