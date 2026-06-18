@@ -226,6 +226,24 @@
   .fold.right .fold-tx p{margin-left:auto;}
   .fold-cta{margin-top:30px;}
 
+  /* ---------- SAX · TRÍPTICO (foto · vídeo · foto) ---------- */
+  .sax{background:var(--cream);padding:clamp(60px,9vw,110px) 44px clamp(70px,10vw,120px);}
+  .sax-head{text-align:center;max-width:780px;margin:0 auto clamp(34px,5vw,54px);}
+  .sax-head .kicker{color:var(--terra);}
+  .sax-head h2{
+    font-family:'Fraunces',serif;font-weight:300;color:var(--brown-deep);
+    font-size:clamp(2rem,4.4vw,3.4rem);margin-top:14px;letter-spacing:-.01em;
+  }
+  .sax-head h2 em{color:var(--terra);}
+  .sax-head p{max-width:56ch;margin:18px auto 0;color:var(--ink-soft);font-size:1rem;line-height:1.62;}
+  .sax-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1180px;margin:0 auto;}
+  .sax-media{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--brown);}
+  .sax-media img,.sax-media video{width:100%;height:100%;object-fit:cover;display:block;}
+  @media(max-width:760px){
+    .sax-trio{grid-template-columns:1fr;gap:10px;max-width:430px;}
+    .sax-media{aspect-ratio:3/4;}
+  }
+
   /* ---------- OS DOIS LADOS DA PRAIA (díptico) ---------- */
   .duo{background:var(--cream);}
   .duo-head{text-align:center;padding:clamp(60px,9vw,110px) 44px clamp(32px,5vw,52px);}
@@ -668,15 +686,25 @@
   </div>
 </section>
 
-<!-- ================= DOBRA 3 · SAX AO PÔR DO SOL ================= -->
-<section class="fold">
-  <video class="fold-video" autoplay muted loop playsinline preload="auto" poster="img/sax-por-do-sol.jpg" style="object-position:center 44%;">
-    <source src="img/sax-video.mp4" type="video/mp4" />
-  </video>
-  <div class="fold-tx rv">
+<!-- ================= SAX · TRÍPTICO (foto · vídeo · foto) ================= -->
+<section class="sax" id="sax">
+  <div class="sax-head rv">
     <span class="kicker">Sabores &amp; sons</span>
     <h2>O sax anuncia <em>o pôr do sol.</em></h2>
     <p>Programação musical com sax às quartas e sábados, e voz e violão aos sábados no Restaurante Fateixa.</p>
+  </div>
+  <div class="sax-trio rv">
+    <div class="sax-media">
+      <img src="img/sax-foto-1.jpg" alt="Apresentação de sax ao pôr do sol no Restaurante Fateixa" loading="lazy" />
+    </div>
+    <div class="sax-media">
+      <video autoplay muted loop playsinline preload="auto" poster="img/sax-por-do-sol.jpg" style="object-position:center 44%;">
+        <source src="img/sax-video.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="sax-media">
+      <img src="img/sax-foto-2.jpg" alt="Música ao vivo no Restaurante Fateixa" loading="lazy" />
+    </div>
   </div>
 </section>
 
