@@ -339,6 +339,34 @@
   .room .ft .pr{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--brown-deep);}
   .room .ft .pr b{font-weight:400;font-size:1.5rem;}
   .room .ft .pr small{display:block;font-family:'Hanken Grotesk',sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);}
+  /* galeria de fotos por quarto (carrossel com setas) */
+  .room .ph.gal{cursor:default;}
+  .gal-track{display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1);}
+  .gal-track img{flex:none;width:100%;height:100%;object-fit:cover;display:block;}
+  .gal-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:40px;height:40px;border:none;border-radius:50%;
+    background:rgba(247,243,235,.86);color:var(--brown-deep);
+    font-family:'Hanken Grotesk',sans-serif;font-size:1.4rem;line-height:1;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    opacity:0;transition:opacity .25s,background .2s;z-index:2;
+    box-shadow:0 1px 6px rgba(0,0,0,.18);
+  }
+  .gal:hover .gal-nav{opacity:1;}
+  .gal-nav.prev{left:12px;padding-right:2px;}
+  .gal-nav.next{right:12px;padding-left:2px;}
+  .gal-nav:hover{background:var(--cream);}
+  .gal-dots{
+    position:absolute;bottom:14px;left:0;right:0;
+    display:flex;justify-content:center;gap:7px;z-index:2;
+  }
+  .gal-dots button{
+    width:7px;height:7px;border-radius:50%;border:none;padding:0;cursor:pointer;
+    background:rgba(247,243,235,.6);box-shadow:0 1px 3px rgba(0,0,0,.3);
+    transition:background .2s,transform .2s;
+  }
+  .gal-dots button.active{background:var(--cream);transform:scale(1.3);}
+  @media (hover:none){ .gal-nav{opacity:.92;} }
 
   /* ---------- SERVIÇOS ---------- */
   .services{padding:clamp(54px,7vw,86px) 44px clamp(80px,12vw,150px);background:var(--cream);}
@@ -599,8 +627,8 @@
   <!-- VÍDEO DE FUNDO · arquivo próprio, mudo, em loop. Autoplay confiável
        no mobile. praia-aerea.jpg é o poster enquanto o vídeo carrega. -->
   <div class="hero-bg">
-    <video autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg">
-      <source src="img/hero-video.mp4" type="video/mp4" />
+    <video autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg?v=2">
+      <source src="img/hero-video.mp4?v=2" type="video/mp4" />
     </video>
   </div>
   <div class="hero-inner">
@@ -716,7 +744,7 @@
   </div>
   <div class="duo-grid">
     <div class="duo-side">
-      <div class="duo-bg" style="background-image:url('img/hero-poster.jpg');"></div>
+      <div class="duo-bg" style="background-image:url('img/hero-poster.jpg?v=2');"></div>
       <div class="duo-tx">
         <span class="kicker">Perfeito para o banho</span>
         <h3>Águas calmas e piscinas naturais.</h3>
@@ -743,7 +771,13 @@
 
   <div class="room-grid">
     <article class="room rv">
-      <div class="ph" style="background-image:url('img/quarto-vila.jpg?v=2');background-position:center 58%;">
+      <div class="ph gal">
+        <div class="gal-track">
+          <img src="img/quarto-vila.jpg" alt="Quarto Vila" loading="lazy">
+          <img src="img/quarto-vila2.jpg" alt="Quarto Vila" loading="lazy">
+          <img src="img/quarto-vila3.jpg" alt="Quarto Vila" loading="lazy">
+          <img src="img/quarto-vila4.jpg" alt="Quarto Vila" loading="lazy">
+        </div>
       </div>
       <h3>Vila</h3>
       <p class="ln">Mais espaço e a atmosfera de casa de praia que faz voltar.</p>
@@ -753,7 +787,13 @@
     </article>
 
     <article class="room rv">
-      <div class="ph" style="background-image:url('img/quarto-frentemar.jpg?v=2');background-position:center 45%;">
+      <div class="ph gal">
+        <div class="gal-track">
+          <img src="img/quarto-frentemar.jpg" alt="Quarto Frente Mar" loading="lazy">
+          <img src="img/quarto-frentemar2.jpg" alt="Quarto Frente Mar" loading="lazy">
+          <img src="img/quarto-frentemar3.jpg" alt="Quarto Frente Mar" loading="lazy">
+          <img src="img/quarto-frentemar4.jpg" alt="Quarto Frente Mar" loading="lazy">
+        </div>
       </div>
       <h3>Frente Mar</h3>
       <p class="ln">O mar como primeira e última imagem do dia. Poucas unidades.</p>
@@ -763,7 +803,12 @@
     </article>
 
     <article class="room rv">
-      <div class="ph" style="background-image:url('img/quarto-garden.jpg');background-position:center 50%;">
+      <div class="ph gal">
+        <div class="gal-track">
+          <img src="img/quarto-garden.jpg" alt="Quarto Garden" loading="lazy">
+          <img src="img/quarto-garden2.jpg" alt="Quarto Garden" loading="lazy">
+          <img src="img/quarto-garden3.jpg" alt="Quarto Garden" loading="lazy">
+        </div>
       </div>
       <h3>Garden</h3>
       <p class="ln">Sossego entre o verde, com a praia a poucos passos da porta.</p>
@@ -773,7 +818,13 @@
     </article>
 
     <article class="room rv">
-      <div class="ph" style="background-image:url('img/quarto-singeleza.jpg');background-position:center 55%;">
+      <div class="ph gal">
+        <div class="gal-track">
+          <img src="img/quarto-singeleza.jpg" alt="Suíte Singeleza" loading="lazy">
+          <img src="img/quarto-singeleza2.jpg" alt="Suíte Singeleza" loading="lazy">
+          <img src="img/quarto-singeleza3.jpg" alt="Suíte Singeleza" loading="lazy">
+          <img src="img/quarto-singeleza4.jpg" alt="Suíte Singeleza" loading="lazy">
+        </div>
       </div>
       <h3>Suíte Singeleza</h3>
       <p class="ln">Suíte com teto em madeira e hidromassagem privativa, para relaxar de verdade.</p>
@@ -783,7 +834,12 @@
     </article>
 
     <article class="room rv">
-      <div class="ph" style="background-image:url('img/quarto-mundau.jpg');background-position:center 50%;">
+      <div class="ph gal">
+        <div class="gal-track">
+          <img src="img/quarto-mundau.jpg" alt="Suíte Mundaú" loading="lazy">
+          <img src="img/quarto-mundau2.jpg" alt="Suíte Mundaú" loading="lazy">
+          <img src="img/quarto-mundau3.jpg" alt="Suíte Mundaú" loading="lazy">
+        </div>
       </div>
       <h3>Suíte Mundaú</h3>
       <p class="ln">Mais espaço e conforto, para uma estadia que pede dias inteiros.</p>
@@ -793,7 +849,13 @@
     </article>
 
     <article class="room rv">
-      <div class="ph" style="background-image:url('img/quarto-marechais.jpg');background-position:center 50%;">
+      <div class="ph gal">
+        <div class="gal-track">
+          <img src="img/quarto-marechais.jpg" alt="Suíte dos Marechais" loading="lazy">
+          <img src="img/quarto-marechais2.jpg" alt="Suíte dos Marechais" loading="lazy">
+          <img src="img/quarto-marechais3.jpg" alt="Suíte dos Marechais" loading="lazy">
+          <img src="img/quarto-marechais4.jpg" alt="Suíte dos Marechais" loading="lazy">
+        </div>
       </div>
       <h3>Suíte dos Marechais</h3>
       <p class="ln">Clima acolhedor e intimista, feito para desacelerar.</p>
@@ -1061,6 +1123,38 @@
     window.addEventListener('resize',function(){ fitCards(); update(); });
     fitCards();
     update();
+  })();
+
+  /* galeria de fotos por quarto (setas + bolinhas) */
+  (function(){
+    document.querySelectorAll('.gal').forEach(function(gal){
+      var track=gal.querySelector('.gal-track');
+      if(!track) return;
+      var slides=track.querySelectorAll('img');
+      if(slides.length<2) return;
+      var idx=0;
+      var prev=document.createElement('button');
+      prev.type='button'; prev.className='gal-nav prev'; prev.setAttribute('aria-label','Foto anterior'); prev.innerHTML='&#8249;';
+      var next=document.createElement('button');
+      next.type='button'; next.className='gal-nav next'; next.setAttribute('aria-label','Próxima foto'); next.innerHTML='&#8250;';
+      var dots=document.createElement('div'); dots.className='gal-dots';
+      var dotEls=[];
+      slides.forEach(function(_,i){
+        var d=document.createElement('button');
+        d.type='button'; d.setAttribute('aria-label','Foto '+(i+1));
+        d.addEventListener('click',function(){ go(i); });
+        dots.appendChild(d); dotEls.push(d);
+      });
+      function go(n){
+        idx=(n+slides.length)%slides.length;
+        track.style.transform='translateX('+(-idx*100)+'%)';
+        dotEls.forEach(function(d,i){ d.classList.toggle('active', i===idx); });
+      }
+      prev.addEventListener('click',function(){ go(idx-1); });
+      next.addEventListener('click',function(){ go(idx+1); });
+      gal.appendChild(prev); gal.appendChild(next); gal.appendChild(dots);
+      go(0);
+    });
   })();
 
   /* reveal suave */
